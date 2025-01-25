@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('status',['aktif','nonaktif']);
             $table->foreignId('guru_id')->constrained('gurus');
             $table->foreignId('materi_id')->constrained('materis');
+            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->foreignId('tugas_id')->constrained('tugas');
 
             $table->timestamps();
         });

@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama_materi')->unique();
             $table->foreignId('guru_id')->constrained('gurus');
+            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->string('deskripsi')->nullable();
+            $table->foreignId('siswa_id')->constrained('siswas');
+            $table->foreignId('siswa_id')->constrained('siswas');
             $table->timestamps();
         });
     }
