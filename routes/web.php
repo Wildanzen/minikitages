@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Nilai;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
@@ -32,7 +31,15 @@ Route::middleware(['auth', 'admin'])->group(
         Route::resource('materi', MateriController::class)->middleware(Admin::class);
         Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
         Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
+<<<<<<< HEAD
         Route::resource('tugas', TugasController::class)->middleware(Admin::class);
     });
+=======
+        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
 
-require __DIR__.'/auth.php';
+>>>>>>> 97806069fac551f387c1e0cfa86e9e9cba326d96
+
+    }
+);
+
+require __DIR__ . '/auth.php';
