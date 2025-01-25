@@ -1,14 +1,22 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Nilai;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\NilaiController;
+use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\Admin\TugasController;
+use App\Http\Controllers\Admin\MateriController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('landing.index');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -20,7 +28,16 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(
     function () {
+<<<<<<< HEAD
         
+=======
+        Route::resource('guru', GuruController::class)->middleware(Admin::class);
+        Route::resource('kelas', KelasController::class)->middleware(Admin::class);
+        Route::resource('materi', MateriController::class)->middleware(Admin::class);
+        Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
+        Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
+        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
+>>>>>>> d72b8c0b69a1865d2215e9a9b29a9100dfedce20
     });
 
 require __DIR__.'/auth.php';
