@@ -32,7 +32,7 @@ Route::middleware(['auth', 'admin'])->group(
         Route::resource('materi', MateriController::class)->middleware(Admin::class);
         Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
         Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
-        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
+        Route::resource('tugas', TugasController::class)->middleware(Admin::class);
     });
 
 require __DIR__.'/auth.php';
