@@ -4,21 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class kelas extends Model
+class Kelas extends Model
 {
     protected $guarded = ['id'];
 
-    public function materis()
+    public function gurus()
     {
-        return $this->hasMany(Materi::class);
+        return $this->hasMany(Guru::class);
+
     }
-
-    public function tugas()
-    {
-        return $this->hasMany(Tugas::class);
-    }
-
-
     public function siswas()
     {
         return $this->hasMany(siswa::class);
