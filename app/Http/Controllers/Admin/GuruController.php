@@ -15,6 +15,7 @@ class GuruController extends Controller
     {
         $guru = Guru::orderBy('created_at','desc');
         return view('guru.index', compact('guru'));
+
     }
 
     /**

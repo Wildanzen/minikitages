@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\Notifikasi;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class NotifikasiController extends Controller
+class KelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class NotifikasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Notifikasi $notifikasi)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -43,7 +42,7 @@ class NotifikasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Notifikasi $notifikasi)
+    public function edit(Kelas $kelas)
     {
         //
     }
@@ -51,7 +50,7 @@ class NotifikasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Notifikasi $notifikasi)
+    public function update(Request $request, Kelas $kelas)
     {
         //
     }
@@ -59,7 +58,7 @@ class NotifikasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Notifikasi $notifikasi)
+    public function destroy(Kelas $kelas)
     {
         //
     }

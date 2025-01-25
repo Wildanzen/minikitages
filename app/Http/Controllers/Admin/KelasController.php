@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\kelas;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class KelasController extends Controller
 {
@@ -35,7 +34,7 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(kelas $kelas)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -43,7 +42,7 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(kelas $kelas)
+    public function edit(Kelas $kelas)
     {
         //
     }
@@ -51,7 +50,7 @@ class KelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, kelas $kelas)
+    public function update(Request $request, Kelas $kelas)
     {
         //
     }
@@ -59,7 +58,7 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(kelas $kelas)
+    public function destroy(Kelas $kelas)
     {
         //
     }

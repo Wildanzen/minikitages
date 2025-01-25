@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>MyLearning - E-Learning Platform</title>
 
     <!-- Google Font & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -12,6 +12,9 @@
 
     <!-- AOS CSS (Animate on Scroll) -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Reset and General Styles */
@@ -23,8 +26,8 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f1f5f8;
-            color: #444;
+            background-color: #119ad5;
+            color:  #444;
         }
 
         h1,
@@ -40,7 +43,7 @@
 
         /* Navbar */
         .navbar {
-            background-color: #3498db;
+            background-color: #3856de;
             padding: 20px;
             display: flex;
             justify-content: space-between;
@@ -48,7 +51,7 @@
         }
 
         .navbar .logo h2 {
-            color: white;
+            color: rgb(0, 0, 0);
         }
 
         .nav-links {
@@ -67,7 +70,7 @@
         }
 
         .nav-links a:hover {
-            color: #e74c3c;
+            color: #fbc02d;
         }
 
         /* Hero Section */
@@ -92,137 +95,83 @@
         }
 
         .hero .btn {
-            background-color: #1abc9c;
+            background-color: #2196f3;
             color: white;
             padding: 12px 40px;
             font-size: 1.3em;
             border-radius: 50px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero .btn:hover {
-            background-color: #16a085;
-            transform: translateY(-5px);
             transition: all 0.3s ease-in-out;
         }
 
-        /* Services Section */
-        .services {
+        .hero .btn:hover {
+            background-color: #1976d2;
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
             padding: 70px 20px;
-            background-color: #ecf0f1;
             text-align: center;
+            background-color: #e3f2fd;
         }
 
-        .services h2 {
-            margin-bottom: 30px;
+        .testimonials h2 {
             font-size: 2.5em;
-            color: #2980b9;
+            margin-bottom: 30px;
+            color: #0288d1;
         }
 
-        .service-cards {
+        .testimonials .cards {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
         }
 
-        .service-cards .card {
-            background-color: #fff;
-            padding: 25px;
-            width: 250px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+        .testimonials .card {
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .service-cards .card:hover {
+        .testimonials .card:hover {
             transform: translateY(-10px);
         }
 
-        .service-cards .card i {
-            font-size: 3em;
-            color: #3498db;
+        .testimonials .card p {
+            font-size: 1em;
+            color: #555;
         }
 
-        .service-cards .card h3 {
-            margin-top: 15px;
-            font-size: 1.6em;
-        }
-
-        /* About Section */
-        .about {
+        /* Statistics Section */
+        .statistics {
             padding: 70px 20px;
-            text-align: center;
-            background-color: #fff;
-        }
-
-        .about h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2980b9;
-        }
-
-        .about p {
-            font-size: 1.2em;
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 70px 20px;
-            background-color: #ecf0f1;
+            background-color: #f1f8e9;
             text-align: center;
         }
 
-        .contact h2 {
+        .statistics h2 {
             font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2980b9;
+            margin-bottom: 30px;
+            color: #388e3c;
         }
 
-        .contact form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .chart-container {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact input,
-        .contact textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            font-size: 1.1em;
-        }
-
-        .contact button {
-            padding: 15px 30px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact button:hover {
-            background-color: #2980b9;
-        }
-
         /* Footer */
         footer {
-            background-color: #34495e;
+            background-color: #424242;
             color: white;
             text-align: center;
             padding: 20px 0;
-            position: relative;
-            width: 100%;
-            bottom: 0;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -231,12 +180,12 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <h2>MyLanding</h2>
+            <h2>MyLearning</h2>
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#statistics">Statistics</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -244,63 +193,72 @@
     <!-- Hero Section -->
     <section class="hero" data-aos="fade-in">
         <div class="hero-content">
-            <h1>Welcome to MyLanding</h1>
-            <p>Build your future with us</p>
-            <a href="#services" class="btn">Explore Now</a>
+            <h1>Welcome to MyLearning</h1>
+            <p>Empowering your future through education</p>
+            <a href="login" class="btn">LOGIN</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services" data-aos="fade-up">
-        <h2>Our Services</h2>
-        <div class="service-cards">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials" data-aos="fade-up">
+        <h2>What Our Students Say</h2>
+        <div class="cards">
             <div class="card">
-                <i class="fas fa-cogs"></i>
-                <h3>Web Development</h3>
-                <p>Custom website development for your business.</p>
+                <p>"This platform has transformed the way I learn. Highly recommended!"</p>
+                <p>- Alex</p>
             </div>
             <div class="card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Design</h3>
-                <p>Creative and modern design services for your brand.</p>
+                <p>"The courses are well-structured and the instructors are amazing."</p>
+                <p>- Maria</p>
             </div>
             <div class="card">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Hosting</h3>
-                <p>Reliable and secure cloud hosting solutions.</p>
+                <p>"I was able to improve my skills and land my dream job."</p>
+                <p>- John</p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about" data-aos="fade-left">
-        <h2>About Us</h2>
-        <p>We are a passionate team working to help you achieve your goals with technology. Our team is dedicated to
-            delivering top-notch solutions that meet your needs.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact" data-aos="fade-right">
-        <h2>Contact Us</h2>
-        <p>Get in touch with us for more information!</p>
-        <form action="#">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Statistics Section -->
+    <section id="statistics" class="statistics" data-aos="fade-right">
+        <h2>Our Achievements</h2>
+        <div class="chart-container">
+            <canvas id="statsChart"></canvas>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 MyLanding. All Rights Reserved.</p>
+        <p>&copy; 2025 MyLearning. All Rights Reserved.</p>
     </footer>
 
     <!-- AOS JS (Animate on Scroll) -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate on Scroll)
         AOS.init();
+
+        // Chart.js Configuration
+        const ctx = document.getElementById('statsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Courses Completed', 'Active Users', 'Instructors'],
+                datasets: [{
+                    label: 'Statistics',
+                    data: [1200, 8000, 150],
+                    backgroundColor: ['#4caf50', '#2196f3', '#ff9800'],
+                    borderColor: ['#388e3c', '#1976d2', '#f57c00'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
     </script>
 </body>
 
