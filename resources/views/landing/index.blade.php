@@ -6,228 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyLearning - E-Learning Platform</title>
 
-    <!-- Google Font & Font Awesome -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
     <!-- AOS CSS (Animate on Scroll) -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <style>
-        /* Reset and General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #119ad5;
-            color:  #444;
-        }
-
-        h1,
-        h2,
-        h3 {
-            color: #2c3e50;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: #3856de;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo h2 {
-            color: rgb(0, 0, 0);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 20px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fbc02d;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: url('https://via.placeholder.com/1920x800') center center no-repeat;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .hero .hero-content h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .hero .hero-content p {
-            font-size: 1.8em;
-            margin-bottom: 40px;
-        }
-
-        .hero .btn {
-            background-color: #2196f3;
-            color: white;
-            padding: 12px 40px;
-            font-size: 1.3em;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .hero .btn:hover {
-            background-color: #1976d2;
-            transform: translateY(-5px);
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 70px 20px;
-            text-align: center;
-            background-color: #e3f2fd;
-        }
-
-        .testimonials h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #0288d1;
-        }
-
-        .testimonials .cards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .testimonials .card {
-            background-color: white;
-            padding: 20px;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .testimonials .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .testimonials .card p {
-            font-size: 1em;
-            color: #555;
-        }
-
-        /* Statistics Section */
-        .statistics {
-            padding: 70px 20px;
-            background-color: #f1f8e9;
-            text-align: center;
-        }
-
-        .statistics h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #388e3c;
-        }
-
-        .chart-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #424242;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-    </style>
 </head>
 
-<body>
+<body class="font-sans bg-white text-gray-800">
+
+
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <h2>MyLearning</h2>
+    <nav
+        class="bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 p-6 flex justify-between items-center transition-all duration-300">
+        <div class="text-white text-2xl font-bold">
+            MyLearning
         </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#statistics">Statistics</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <ul class="flex space-x-6 text-white">
+            <li>
+                <a href="#home" class="relative group">
+                    Home
+                    <span
+                        class="absolute left-0 bottom-0 w-0 h-1 bg-white transition-all group-hover:w-full transform group-active:scale-110"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#testimonials" class="relative group">
+                    Testimonials
+                    <span
+                        class="absolute left-0 bottom-0 w-0 h-1 bg-white transition-all group-hover:w-full transform group-active:scale-110"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#statistics" class="relative group">
+                    Statistics
+                    <span
+                        class="absolute left-0 bottom-0 w-0 h-1 bg-white transition-all group-hover:w-full transform group-active:scale-110"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#contact" class="relative group">
+                    Contact
+                    <span
+                        class="absolute left-0 bottom-0 w-0 h-1 bg-white transition-all group-hover:w-full transform group-active:scale-110"></span>
+                </a>
+            </li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" data-aos="fade-in">
-        <div class="hero-content">
-            <h1>Welcome to MyLearning</h1>
-            <p>Empowering your future through education</p>
-            <a href="login" class="btn">LOGIN</a>
+    <section class="hero bg-cover bg-center text-center py-32 bg-fixed"
+        style="background-image: url('https://via.placeholder.com/1920x800');" data-aos="fade-in">
+        <div class="text-white">
+            <h1
+                class="text-5xl font-bold mb-4 uppercase tracking-widest bg-gradient-to-r from-blue-600 via-pink-500 to-red-400 text-transparent bg-clip-text transform transition-all duration-300 ease-in-out hover:scale-110">
+                Welcome to MyLearning
+            </h1>
+            <p class="text-black mb-8">Unlock your full potential with the best learning platform</p>
+            <a href="login"
+                class="bg-blue-500 text-white py-3 px-8 rounded-full text-xl transition-all transform hover:scale-105 hover:shadow-xl hover:bg-blue-600 active:scale-95 active:shadow-inner">
+                LOGIN
+            </a>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials" data-aos="fade-up">
-        <h2>What Our Students Say</h2>
-        <div class="cards">
-            <div class="card">
-                <p>"This platform has transformed the way I learn. Highly recommended!"</p>
+    <section id="testimonials" class="bg-blue-50 py-16 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold mb-8 text-blue-800">What Our Students Say</h2>
+        <div class="flex justify-center gap-10 flex-wrap">
+            <div
+                class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100">
+                <p class="text-gray-600 mb-4">"This platform has transformed the way I learn. Highly recommended!"</p>
                 <p>- Alex</p>
             </div>
-            <div class="card">
-                <p>"The courses are well-structured and the instructors are amazing."</p>
+            <div
+                class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100">
+                <p class="text-gray-600 mb-4">"The courses are well-structured and the instructors are amazing."</p>
                 <p>- Maria</p>
             </div>
-            <div class="card">
-                <p>"I was able to improve my skills and land my dream job."</p>
+            <div
+                class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100">
+                <p class="text-gray-600 mb-4">"I was able to improve my skills and land my dream job."</p>
                 <p>- John</p>
             </div>
         </div>
     </section>
 
     <!-- Statistics Section -->
-    <section id="statistics" class="statistics" data-aos="fade-right">
-        <h2>Our Achievements</h2>
-        <div class="chart-container">
+    <section id="statistics" class="bg-green-50 py-16 text-center" data-aos="fade-right">
+        <h2 class="text-3xl font-semibold mb-8 text-green-700">Our Achievements</h2>
+        <div class="max-w-4xl mx-auto transform hover:shadow-2xl transition-all duration-300 ease-in-out">
             <canvas id="statsChart"></canvas>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-16">
         <p>&copy; 2025 MyLearning. All Rights Reserved.</p>
     </footer>
 
@@ -255,6 +135,13 @@
                 plugins: {
                     legend: {
                         display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return tooltipItem.label + ": " + tooltipItem.raw;
+                            }
+                        }
                     }
                 }
             }
