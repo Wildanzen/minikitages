@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyLearning - E-Learning Platform</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- AOS CSS (Animate on Scroll) -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Chart.js -->
@@ -20,7 +17,6 @@
 </head>
 
 <body class="font-sans bg-white text-gray-800">
-
 
     <!-- Navbar -->
     <nav
@@ -73,6 +69,37 @@
                 class="bg-blue-500 text-white py-3 px-8 rounded-full text-xl transition-all transform hover:scale-105 hover:shadow-xl hover:bg-blue-600 active:scale-95 active:shadow-inner">
                 LOGIN
             </a>
+        </div>
+    </section>
+
+    <!-- New Cards Section Below Hero -->
+    <section class="py-16 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold mb-8 text-blue-800">Explore Our Features</h2>
+        <div class="flex justify-center gap-10 flex-wrap">
+            <!-- Card 1 -->
+            <div class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100"
+                data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://via.placeholder.com/150" alt="feature image" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Online Courses</h3>
+                <p class="text-gray-600">Access a wide variety of courses and enhance your skills from the comfort of
+                    your home.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100"
+                data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://via.placeholder.com/150" alt="feature image" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Expert Instructors</h3>
+                <p class="text-gray-600">Learn from industry experts who will guide you throughout your learning
+                    journey.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-6 w-80 rounded-lg shadow-lg transform hover:translate-y-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:bg-indigo-100"
+                data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://via.placeholder.com/150" alt="feature image" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Interactive Quizzes</h3>
+                <p class="text-gray-600">Test your knowledge with quizzes designed to reinforce your learning
+                    experience.</p>
+            </div>
         </div>
     </section>
 
