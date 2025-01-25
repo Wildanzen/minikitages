@@ -13,7 +13,9 @@ class GuruController extends Controller
      */
     public function index()
     {
-        //
+        $guru = Guru::orderBy('created_at','desc');
+        return view('guru.index', compact('guru'));
+
     }
 
     /**
@@ -21,7 +23,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        return view('guru.create');
     }
 
     /**
@@ -29,7 +31,15 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_guru' => 'required|string|unique:gurus',
+            'status' => 'required|in:aktif,nonaktif',
+            'umur' => 'required|integer|min:0',
+            'alamat' => 'required|string',
+        ]);
+        Guru::create($validated);
+
+        return redirect()->route('guru.index')->with('success', 'Guru berhasil dibuat.');
     }
 
     /**
@@ -45,7 +55,7 @@ class GuruController extends Controller
      */
     public function edit(Guru $guru)
     {
-        //
+        return view('guru.edit',compact('guru'));
     }
 
     /**
@@ -53,7 +63,16 @@ class GuruController extends Controller
      */
     public function update(Request $request, Guru $guru)
     {
-        //
+        $validated = $request->validate([
+        'nama_guru' => 'required|string|unique:gurus,nama_guru,'.$guru->id,
+        'status' => 'required|in:aktif,nonaktif',
+        'umur' => 'required|integer|min:0',
+        'alamat' => 'required|string',
+        ]);
+
+        $guru->update($validated);
+
+        return redirect()->route('guru.index')->with('success', 'Guru berhasil di edit.');
     }
 
     /**
@@ -61,6 +80,7 @@ class GuruController extends Controller
      */
     public function destroy(Guru $guru)
     {
-        //
+        $guru->delete();
+        return redirect()->route('guru.index')->with('success', 'Guru berhasil di hapus.');
     }
 }
