@@ -28,16 +28,14 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(
     function () {
-<<<<<<< HEAD
-        
-=======
+
         Route::resource('guru', GuruController::class)->middleware(Admin::class);
         Route::resource('kelas', KelasController::class)->middleware(Admin::class);
         Route::resource('materi', MateriController::class)->middleware(Admin::class);
         Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
         Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
         Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
->>>>>>> d72b8c0b69a1865d2215e9a9b29a9100dfedce20
+
     });
 
 require __DIR__.'/auth.php';
