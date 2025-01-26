@@ -33,7 +33,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('tugas', TugasController::class)->middleware(Admin::class); // Bagian yang sebelumnya konflik sudah diperbaiki
 });
 
-<<<<<<< HEAD
+
 Route::middleware(['auth', 'admin'])->group(
     function () {
 
@@ -47,6 +47,3 @@ Route::middleware(['auth', 'admin'])->group(
     });
 
 require __DIR__.'/auth.php';
-=======
-require __DIR__ . '/auth.php';
->>>>>>> 1db69de16257e0881d0c57d8f25627891d36e844
