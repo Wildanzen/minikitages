@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materis', function (Blueprint $table) {
+        Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_materi')->unique();
-            $table->foreignId('guru_id')->constrained('gurus');
-            $table->foreignId('kelas_id')->constrained('kelas');
-            $table->string('deskripsi')->nullable();
-            $table->foreignId('siswa_id')->constrained('siswas');
+            $table->integer('nilai');
+            $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade'); // Relasi ke siswa
+            $table->foreignId('tugas_id')->constrained('tugas')->onDelete('cascade'); // Relasi ke tugas
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materis');
+        Schema::dropIfExists('nilais');
     }
 };

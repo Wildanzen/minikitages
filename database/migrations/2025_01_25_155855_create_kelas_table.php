@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id')->constrained('gurus');
-            $table->foreignId('materi_id')->constrained('materis');
-            $table->foreignId('tugas_id')->constrained('tugas');
-            $table->integer('nilai');
+            $table->string('nama_kelas')->unique();
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade'); // Relasi ke guru
             $table->timestamps();
         });
+
     }
 
     /**
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('kelas');
     }
 };
