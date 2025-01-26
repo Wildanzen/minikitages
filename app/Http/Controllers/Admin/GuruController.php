@@ -34,7 +34,7 @@ class GuruController extends Controller
         $validated = $request->validate([
             'nama_guru' => 'required|string|unique:gurus',
             'status' => 'required|in:aktif,nonaktif',
-            'umur' => 'required|integer|min:0',
+            'umur' => 'required|integer|min:1',
             'alamat' => 'required|string',
         ]);
         Guru::create($validated);
