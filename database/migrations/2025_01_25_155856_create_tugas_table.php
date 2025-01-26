@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas', function (Blueprint $table) {
+        Schema::create('tugas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kelas')->unique();
-            $table->foreignId('guru_id')->constrained('gurus')->restrictOnDelete();
-            $table->foreignId('siswa_id')->constrained('siswas')->restrictOnDelete();
+            $table->string('judul_tugas');
+            $table->text('deskripsi')->nullable();
+            $table->date('tanggal_deadline');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade'); // Relasi ke kelas
             $table->timestamps();
         });
+
     }
 
     /**
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('tugas');
     }
 };
