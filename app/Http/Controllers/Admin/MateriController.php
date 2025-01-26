@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\materi;
-use App\Models\Guru;
 use App\Models\Kelas;
-use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -16,7 +14,7 @@ class MateriController extends Controller
      */
     public function index()
     {
-        $materi = Materi::with(['guru', 'kelas', 'siswa'])->get();
+        $materi = Materi::with(['kelas'])->get();
         return view('admin.materi.index', compact('materi'));
     }
 
@@ -25,9 +23,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-        $guru = Guru::all();
         $kelas = Kelas::all();
-        $siswa = Siswa::all();
 
         return view('admin.materi.create', compact('guru', 'kelas', 'siswa'));
     }
@@ -39,10 +35,8 @@ class MateriController extends Controller
     {
         $validated = $request->validate([
             'nama_materi' => 'required|string|unique:materis',
-            'guru_id' => 'required|exists:gurus,id',
             'kelas_id' => 'required|exists:kelas,id',
             'deskripsi' => 'nullable|string',
-            'siswa_id' => 'required|exists:siswas,id',
         ]);
 
         Materi::create($validated);
@@ -63,9 +57,7 @@ class MateriController extends Controller
      */
     public function edit(materi $materi)
     {
-        $guru = Guru::all();
         $kelas = Kelas::all();
-        $siswa = Siswa::all();
 
         return view('admin.materi.edit', compact('materi', 'guru', 'kelas', 'siswa'));
     }
@@ -77,10 +69,8 @@ class MateriController extends Controller
     {
         $validated = $request->validate([
             'nama_materi' => 'required|string|unique:materis,nama_materi,' . $materi->id,
-            'guru_id' => 'required|exists:gurus,id',
             'kelas_id' => 'required|exists:kelas,id',
             'deskripsi' => 'nullable|string',
-            'siswa_id' => 'required|exists:siswas,id',
         ]);
 
         $materi->update($validated);
