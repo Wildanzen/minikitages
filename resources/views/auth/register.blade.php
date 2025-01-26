@@ -45,7 +45,9 @@
                 <input id="name" type="text" name="name" autofocus autocomplete="name"
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
                 @error('name')
-                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                <div class="mt-1 text-sm text-red-500 bg-red-100 border border-red-500 rounded-lg px-3 py-2">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
 
@@ -55,7 +57,9 @@
                 <input id="email" type="email" name="email" autocomplete="username"
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
                 @error('email')
-                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                <div class="mt-1 text-sm text-red-500 bg-red-100 border border-red-500 rounded-lg px-3 py-2">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
 
@@ -74,6 +78,11 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" />
                     </svg>
                 </button>
+                @error('password')
+                <div class="mt-1 text-sm text-red-500 bg-red-100 border border-red-500 rounded-lg px-3 py-2">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
 
             <!-- Confirm Password -->
@@ -91,11 +100,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" />
                     </svg>
                 </button>
+                @error('password_confirmation')
+                <div class="mt-1 text-sm text-red-500 bg-red-100 border border-red-500 rounded-lg px-3 py-2">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-
-            @error('password_confirmation')
-            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-            @enderror
 
             <!-- Register Button -->
             <button type="submit"

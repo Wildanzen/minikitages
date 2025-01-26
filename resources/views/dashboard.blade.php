@@ -1,47 +1,99 @@
 @extends('layouts.app_modern')
 
 @section('content')
+    <style>
+        body {
+            background-color: #e0e0e0; /* Latar belakang halaman */
+        }
+
+        #chart {
+            background-color: #ffffff; /* Latar belakang grafik */
+            padding: 20px; /* Padding untuk grafik */
+            border-radius: 40px; /* Sudut melengkung yang lebih tumpul */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek kedalaman */
+            width: 100%; /* Lebar default 100% */
+            max-width: 770px; /* Lebar maksimum */
+            margin-left: -20px;  /* Menambahkan margin kiri untuk menggeser ke kiri */
+            margin-top: -10x;
+        }
+
+        /* Optional: Adjust container spacing */
+        .container {
+            padding-top: 0; /* Menghapus padding atas */
+        }
+    </style>
+
     <div class="container py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-gray-100 p-6 rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <!-- Title for the page -->
-                    <h2 class="text-xl font-semibold mb-4">Dashboard</h2>
+                    <h5 class="text-xl font-semibold mb-4">overview</h5>
 
                     <!-- Chart Container -->
-                    <div>
-                        <canvas id="myChart" width="400" height="200"></canvas>
-                    </div>
+                    <div id="chart"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Include ApexCharts library -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar', // Tipe chart (bisa line, bar, dll)
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                fill: false,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Biru muda untuk area di bawah batang
-                borderColor: 'rgba(54, 162, 235, 1)', // Biru untuk warna tepi batang
-                borderWidth: 1, // Lebar garis border
-                barThickness: 15, // Ketebalan batang chart (kuruskan dengan angka lebih kecil)
-                tension: 0.1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        var options = {
+            chart: {
+                type: 'bar',
+                height: 400,
+                width: 750,
+                toolbar: {
+                    show: false
+                },
+                // background: '#ffffff' // Mengubah latar belakang menjadi putih
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '20%', // Mengurangi lebar batang untuk membuatnya lebih ramping
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: true,
+            },
+            colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
+            series: [{
+                name: 'My First Dataset',
+                data: [65, 59, 80, 81, 56]
+            }],
+            xaxis: {
+                categories: ['January', 'February', 'March', 'April', 'May'],
+            },
+            yaxis: {
+                title: {
+                    // text: 'Values'
                 }
+            },
+            title: {
+                text: 'Monthly Data', // Mengaktifkan judul grafik
+                align: 'center',
+                style: {
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                    color: '#333'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                shared: true,
+                intersect: false
             }
         }
-    });
-</script>
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
 
 @endsection

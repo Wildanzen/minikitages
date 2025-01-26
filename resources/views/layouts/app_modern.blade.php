@@ -6,12 +6,12 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize</title>
+    <title>Online Class</title>
     <link rel="shortcut icon" type="image/png" href="modern/src/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="modern/src/assets/css/styles.min.css" />
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #ffffff, #61daff);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -80,7 +80,7 @@
         }
 
         nav.navbar a.nav-link:hover {
-            color: #6a11cb;
+            color: #ffffff;
             transition: color 0.3s ease-in-out;
         }
 
@@ -110,6 +110,7 @@
         .brand-logo img:hover {
             transform: scale(1.1);
             transition: transform 0.3s ease;
+
         }
     </style>
 </head>
@@ -123,13 +124,31 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="dashboard" class="text-nowrap logo-img">
-                        <img src="modern/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
-                    </a>
-                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-                        <i class="ti ti-x fs-8"></i>
-                    </div>
+            <a href="/siswa-offline" class="text-nowrap logo-img">
+                <div id="logo-container" class="d-flex justify-content-center align-items-center">
+                    <img id="logo" src="https://pkl.hummatech.com/logopkldark.png" class="dark-logo" width="180" alt="" style="">
                 </div>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                $(document).ready(function() {
+                    var logo = $('#logo');
+                    var newSrc = "https://pkl.hummatech.com/logopkldark.png";
+                    var newWidth = "180";
+
+                    setTimeout(function() {
+                        logo.fadeOut(1000, function() {
+                            logo.attr('src', newSrc);
+                            logo.attr('width', newWidth);
+                            logo.fadeIn(1000);
+                        });
+                    }, 2500);
+                });
+                </script> <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png" class="light-logo" width="180" alt="" style="display: none;">
+            </a>
+            <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8 text-muted text-primary"></i>
+            </div>
+        </div>
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
@@ -138,7 +157,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                            <a class="sidebar-link" href="./dashboard" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -150,43 +169,49 @@
                             <span class="hide-menu">UI COMPONENTS</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/guru" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-user"></i>
                                 </span>
-                                <span class="hide-menu">Buttons</span>
+                                <span class="hide-menu">Guru</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-alert-circle"></i>
-                                </span>
-                                <span class="hide-menu">Alerts</span>
+                            <a class="sidebar-link" href=".Kelas" aria-expanded="false">
+                                <span><i class="ti ti-home"></i></span>
+                                <span class="hide-menu">Kelas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                            <a class="sidebar-link" href="./siswa" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-cards"></i>
+                                    <i class="ti ti-users"></i>
                                 </span>
-                                <span class="hide-menu">Card</span>
+                                <span class="hide-menu">Siswa</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                            <a class="sidebar-link" href="./tugas" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-description"></i>
                                 </span>
-                                <span class="hide-menu">Forms</span>
+                                <span class="hide-menu">Tugas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                            <a class="sidebar-link" href="./nilai" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-typography"></i>
+                                 <span><i class="ti ti-check"></i></span>
                                 </span>
-                                <span class="hide-menu">Typography</span>
+                                <span class="hide-menu">Nilai</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./materi" aria-expanded="false">
+                                <span>
+                               <span><i class="ti ti-book"></i></span>
+                                </span>
+                                <span class="hide-menu">Materi</span>
                             </a>
                         </li>
                         </li>
@@ -218,7 +243,8 @@
                                     target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Online Class</a>
                             </div>
                             <div class="unlimited-access-img">
-                                <img src="modern/src/assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
+                                <img src="modern/src/assets/images/backgrounds/rocket.png" alt=""
+                                    class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -249,33 +275,44 @@
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <!-- Nama User -->
+                            <li class="nav-item">
+                                <span class="btn btn-primary text-white">
+                                    {{ Auth::user()->name }}
+                                </span>
+                            </li>
+                            <!-- Foto Profil -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <img src="modern/src/assets/images/profile/user-1.jpg" alt="" width="35" height="35"
-                                        class="rounded-circle">
+                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="modern/src/assets/images/profile/user-1.jpg" alt=""
+                                        width="35" height="35" class="rounded-circle">
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                    aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">My Profile</p>
                                         </a>
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-mail fs-6"></i>
                                             <p class="mb-0 fs-3">My Account</p>
                                         </a>
-                                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-list-check fs-6"></i>
                                             <p class="mb-0 fs-3">My Task</p>
                                         </a>
-                                        <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                        <a href="{{ route('logout') }}"
+                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-
                 </nav>
             </header>
             <!--  Header End -->
