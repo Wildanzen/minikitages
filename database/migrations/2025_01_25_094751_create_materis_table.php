@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('kelas_id')->constrained('kelas');
             $table->string('deskripsi')->nullable();
             $table->foreignId('siswa_id')->constrained('siswas');
-            $table->foreignId('siswa_id')->constrained('siswas');
             $table->timestamps();
         });
     }

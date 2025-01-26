@@ -10,32 +10,32 @@ use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
 
+// Landing page
 Route::get('/', function () {
     return view('landing.index');
 });
 
+// Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'admin'])->group(
-    function () {
-        Route::resource('guru', GuruController::class)->middleware(Admin::class);
-        Route::resource('kelas', KelasController::class)->middleware(Admin::class);
-        Route::resource('materi', MateriController::class)->middleware(Admin::class);
-        Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
-        Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
-        Route::resource('tugas', TugasController::class)->middleware(Admin::class);
-    }
-);
+// Admin routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('guru', GuruController::class)->middleware(Admin::class);
+    Route::resource('kelas', KelasController::class)->middleware(Admin::class);
+    Route::resource('materi', MateriController::class)->middleware(Admin::class);
+    Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
+    Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
+    Route::resource('tugas', TugasController::class)->middleware(Admin::class);
+});
 
-
-
-
+// Authentication routes
 require __DIR__ . '/auth.php';

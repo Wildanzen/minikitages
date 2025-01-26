@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class User
 {
 
-    public function handle($request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, $role)
     {
         if (Auth::check() && Auth::user()->role !== $role) {
             return redirect('');

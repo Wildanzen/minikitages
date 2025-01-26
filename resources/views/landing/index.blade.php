@@ -14,6 +14,168 @@
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color:  #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #3856de;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo h2 {
+            color: rgb(255, 255, 255);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbc02d;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1920x800') center center no-repeat;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero .hero-content p {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            background-color: #2196f3;
+            color: white;
+            padding: 12px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hero .btn:hover {
+            background-color: #1976d2;
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 70px 20px;
+            text-align: center;
+            background-color: #e3f2fd;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #0288d1;
+        }
+
+        .testimonials .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .testimonials .card {
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonials .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonials .card p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            padding: 70px 20px;
+            background-color: #f1f8e9;
+            text-align: center;
+        }
+
+        .statistics h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #388e3c;
+        }
+
+        .chart-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #424242;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+=======
+>>>>>>> ffa78681aa28489e3ccabb403336b4d27a54b21e
 </head>
 
 <body class="font-sans bg-gray-50 text-gray-800">
