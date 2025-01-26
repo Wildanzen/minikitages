@@ -24,19 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'admin'])->group(
-    function () {
-        Route::resource('guru', GuruController::class)->middleware(Admin::class);
-        Route::resource('kelas', KelasController::class)->middleware(Admin::class);
-        Route::resource('materi', MateriController::class)->middleware(Admin::class);
-        Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
-        Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
-
-        Route::resource('tugas', TugasController::class)->middleware(Admin::class);
-    });
-
-        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
-
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('guru', GuruController::class)->middleware(Admin::class);
+    Route::resource('kelas', KelasController::class)->middleware(Admin::class);
+    Route::resource('materi', MateriController::class)->middleware(Admin::class);
+    Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
+    Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
+    Route::resource('tugas', TugasController::class)->middleware(Admin::class); // Bagian yang sebelumnya konflik sudah diperbaiki
+});
 
 require __DIR__ . '/auth.php';

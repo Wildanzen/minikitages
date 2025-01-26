@@ -13,8 +13,10 @@ class GuruController extends Controller
      */
     public function index()
     {
+
         $guru = Guru::orderBy('created_at', 'desc');
         return view('guru.index', compact('guru'));
+
 
     }
 
