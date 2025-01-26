@@ -4,7 +4,7 @@
 <div class="container mx-auto py-6">
     <h1 class="text-2xl font-semibold mb-4">Edit Guru</h1>
 
-    <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
+    <form action="{{ route('guru.update', $guru->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-4">

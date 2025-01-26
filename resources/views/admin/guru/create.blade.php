@@ -4,7 +4,7 @@
 <div class="container mx-auto py-6">
     <h1 class="text-2xl font-semibold mb-4">Tambah Guru</h1>
 
-    <form action="{{ route('admin.guru.store') }}" method="POST">
+    <form action="{{ route('guru.store') }}" method="POST">
         @csrf
         <div class="mb-4">
             <label for="nama_guru" class="block text-sm font-medium text-gray-700">Nama Guru</label>

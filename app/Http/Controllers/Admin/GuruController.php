@@ -39,7 +39,7 @@ class GuruController extends Controller
         ]);
         Guru::create($validated);
 
-        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil dibuat.');
+        return redirect()->route('guru.index')->with('success', 'Guru berhasil dibuat.');
     }
 
     /**
