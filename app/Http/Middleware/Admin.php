@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 class Admin
 {
 
-    public function handle($request, Closure $next, $role)
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role !== $role) {
+        if (Auth::user()->role !== 'admin') {
             return redirect('');
         }
         return $next($request);

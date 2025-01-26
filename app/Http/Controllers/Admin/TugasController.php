@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tugas;
+use App\Models\Materi;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -13,7 +15,8 @@ class TugasController extends Controller
      */
     public function index()
     {
-        //
+        $tugas = Tugas::with(['guru', 'materi'])->get();
+        return view('admin.tugas.index', compact('tugas'));
     }
 
     /**
@@ -21,7 +24,10 @@ class TugasController extends Controller
      */
     public function create()
     {
-        //
+        $guru = Guru::all();
+        $materi = Materi::all();
+
+        return view('admin.tugas.create', compact('guru', 'materi'));
     }
 
     /**
@@ -29,7 +35,15 @@ class TugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'guru_id' => 'required|exists:gurus,id',
+            'materi_id' => 'required|exists:materis,id',
+            'tugas' => 'required|string',
+        ]);
+
+        Tugas::create($validated);
+
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil ditambahkan.');
     }
 
     /**
@@ -45,7 +59,10 @@ class TugasController extends Controller
      */
     public function edit(Tugas $tugas)
     {
-        //
+        $guru = Guru::all();
+        $materi = Materi::all();
+
+        return view('admin.tugas.edit', compact('tugas', 'guru', 'materi'));
     }
 
     /**
@@ -53,7 +70,15 @@ class TugasController extends Controller
      */
     public function update(Request $request, Tugas $tugas)
     {
-        //
+        $validated = $request->validate([
+            'guru_id' => 'required|exists:gurus,id,' . $tugas->id,
+            'materi_id' => 'required|exists:materis,id',
+            'tugas' => 'required|string',
+        ]);
+
+        $tugas->update($validated);
+
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil diperbarui.');
     }
 
     /**
@@ -61,6 +86,8 @@ class TugasController extends Controller
      */
     public function destroy(Tugas $tugas)
     {
-        //
+        $tugas->delete();
+
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil dihapus.');
     }
 }

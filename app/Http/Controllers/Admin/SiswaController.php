@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\siswa;
+use App\Models\Guru;
+use App\Models\Materi;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -13,7 +15,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswas = Siswa::with(['guru', 'materi'])->get();
+        return view('admin.siswa.index', compact('siswa'));
     }
 
     /**
@@ -21,7 +24,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $guru = Guru::all();
+        $materi = Materi::all();
+        return view('admin.siswa.create', compact('guru', 'materi'));
     }
 
     /**
@@ -29,7 +34,18 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_siswa' => 'required|string|unique:siswas',
+            'kelas' => 'required|string',
+            'alamat' => 'required|string',
+            'status' => 'required|in:aktif,nonaktif',
+            'guru_id' => 'required|exists:gurus,id',
+            'materi_id' => 'required|exists:materis,id',
+        ]);
+
+        Siswa::create($validated);
+
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
     }
 
     /**
@@ -45,7 +61,10 @@ class SiswaController extends Controller
      */
     public function edit(siswa $siswa)
     {
-        //
+        $gurus = Guru::all();
+        $materis = Materi::all();
+
+        return view('admin.siswa.edit', compact('siswa', 'guru', 'materi'));
     }
 
     /**
@@ -53,7 +72,18 @@ class SiswaController extends Controller
      */
     public function update(Request $request, siswa $siswa)
     {
-        //
+        $validated = $request->validate([
+            'nama_siswa' => 'required|string|unique:siswas,nama_siswa,' . $siswa->id,
+            'kelas' => 'required|string',
+            'alamat' => 'required|string',
+            'status' => 'required|in:aktif,nonaktif',
+            'guru_id' => 'required|exists:gurus,id',
+            'materi_id' => 'required|exists:materis,id',
+        ]);
+
+        $siswa->update($validated);
+
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil diperbarui.');
     }
 
     /**
@@ -61,6 +91,8 @@ class SiswaController extends Controller
      */
     public function destroy(siswa $siswa)
     {
-        //
+        $siswa->delete();
+
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil dihapus.');
     }
 }
