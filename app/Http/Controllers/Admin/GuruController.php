@@ -13,13 +13,11 @@ class GuruController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        //
-=======
+
         $guru = Guru::orderBy('created_at', 'desc');
         return view('guru.index', compact('guru'));
 
->>>>>>> ffa78681aa28489e3ccabb403336b4d27a54b21e
+
     }
 
     /**
