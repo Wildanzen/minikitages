@@ -33,17 +33,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('tugas', TugasController::class)->middleware(Admin::class); // Bagian yang sebelumnya konflik sudah diperbaiki
 });
 
-
-Route::middleware(['auth', 'admin'])->group(
-    function () {
-
-        Route::resource('guru', GuruController::class)->middleware(Admin::class);
-        Route::resource('kelas', KelasController::class)->middleware(Admin::class);
-        Route::resource('materi', MateriController::class)->middleware(Admin::class);
-        Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
-        Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
-        Route::resource('tugas', TugasController::class)->middleware(Admin::class);
-        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
-    });
-
 require __DIR__.'/auth.php';

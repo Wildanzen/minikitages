@@ -18,8 +18,7 @@ class GuruController extends Controller
         return view('admin.guru.index', compact('guru'));
 
 
-        $guru = Guru::orderBy('created_at', 'desc');
-        return view('guru.index', compact('guru'));
+       
 
 
     }
