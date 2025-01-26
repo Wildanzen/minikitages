@@ -26,7 +26,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #119ad5;
+            background-color: #ffffff;
             color:  #444;
         }
 
@@ -51,7 +51,7 @@
         }
 
         .navbar .logo h2 {
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
         }
 
         .nav-links {

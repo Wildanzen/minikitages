@@ -13,7 +13,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
