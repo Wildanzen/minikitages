@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul_materi');
             $table->text('konten');
-            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade'); // Relasi ke kelas
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade'); 
             $table->timestamps();
         });
 
