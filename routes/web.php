@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Nilai;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
@@ -11,11 +10,11 @@ use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('landing.index');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -25,7 +24,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('guru', GuruController::class)->middleware(Admin::class);
+    Route::resource('kelas', KelasController::class)->middleware(Admin::class);
+    Route::resource('materi', MateriController::class)->middleware(Admin::class);
+    Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
+    Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
+    Route::resource('tugas', TugasController::class)->middleware(Admin::class); // Bagian yang sebelumnya konflik sudah diperbaiki
+});
 
+<<<<<<< HEAD
 Route::middleware(['auth', 'admin'])->group(
     function () {
 
@@ -39,3 +47,6 @@ Route::middleware(['auth', 'admin'])->group(
     });
 
 require __DIR__.'/auth.php';
+=======
+require __DIR__ . '/auth.php';
+>>>>>>> 1db69de16257e0881d0c57d8f25627891d36e844
