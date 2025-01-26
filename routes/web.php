@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.index');
 });
 
 Route::get('/dashboard', function () {
@@ -31,15 +31,11 @@ Route::middleware(['auth', 'admin'])->group(
         Route::resource('materi', MateriController::class)->middleware(Admin::class);
         Route::resource('nilai', NilaiController::class)->middleware(Admin::class);
         Route::resource('siswa', SiswaController::class)->middleware(Admin::class);
-<<<<<<< HEAD
         Route::resource('tugas', TugasController::class)->middleware(Admin::class);
-    });
-=======
-        Route::resource('Tugas', TugasController::class)->middleware(Admin::class);
-
->>>>>>> 97806069fac551f387c1e0cfa86e9e9cba326d96
-
     }
 );
+
+
+
 
 require __DIR__ . '/auth.php';
