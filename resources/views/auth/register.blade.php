@@ -11,8 +11,6 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url('modern/src/assets/images/gambar/sekolah.jpg');
-            /* Gantilah dengan URL gambar yang diinginkan */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -135,7 +133,7 @@
             <!-- Register Button -->
             <button type="submit"
                 class="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
-                Register
+                Daftar
             </button>
         </form>
 

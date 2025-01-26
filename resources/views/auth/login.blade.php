@@ -9,9 +9,9 @@
         @import url('https://fonts.googleapis.com/css2?family=PoPpins:wght@400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url('https://example.com/your-image.jpg'); /* Ganti dengan URL gambar yang sesuai */
-            background-size: cover;
-            background-position: center;
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
         }
         .online {
             color: #51c7ee; /* Light blue */
