@@ -16,12 +16,6 @@ class GuruController extends Controller
 
         $guru = Guru::all();
         return view('admin.guru.index', compact('guru'));
-
-
-        $guru = Guru::orderBy('created_at', 'desc');
-        return view('guru.index', compact('guru'));
-
-
     }
 
     /**
@@ -64,8 +58,6 @@ class GuruController extends Controller
 
         return view('admin.guru.edit',compact('guru'));
 
-        return view('guru.edit', compact('guru'));
-
     }
 
     /**
@@ -75,7 +67,6 @@ class GuruController extends Controller
     {
         $validated = $request->validate([
             'nama_guru' => 'required|string|unique:gurus,nama_guru,'.$guru->id,
-            'nama_guru' => 'required|string|unique:gurus,nama_guru,' . $guru->id,
             'status' => 'required|in:aktif,nonaktif',
             'umur' => 'required|integer|min:0',
             'alamat' => 'required|string',
