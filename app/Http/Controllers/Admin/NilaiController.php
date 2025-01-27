@@ -39,7 +39,7 @@ class NilaiController extends Controller
     {
         $validated = $request->validate([
             'nilai' => 'required|integer|min:0|max:100',
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'siswa_id' => 'required|exists:siswa,id',
             'tugas_id' => 'required|exists:tugas,id',
         ]);
@@ -76,7 +76,7 @@ class NilaiController extends Controller
     {
         $validated = $request->validate([
             'nilai' => 'required|integer|min:0|max:100,'.$nilai->id,
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'siswa_id' => 'required|exists:siswa,id',
             'tugas_id' => 'required|exists:tugas,id',
         ]);

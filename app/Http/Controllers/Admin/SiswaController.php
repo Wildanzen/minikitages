@@ -39,7 +39,7 @@ class SiswaController extends Controller
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'materi_id' => 'required|exists:materis,id',
         ]);
 
@@ -77,7 +77,7 @@ class SiswaController extends Controller
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'materi_id' => 'required|exists:materis,id',
         ]);
 

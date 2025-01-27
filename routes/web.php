@@ -1,16 +1,16 @@
 <?php
 
 use App\Http\Middleware\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KelasController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
-use Illuminate\Support\Facades\Auth;
 
 // Landing page
 Route::get('/', function () {
