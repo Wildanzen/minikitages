@@ -2,7 +2,7 @@
 
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KelasController;
+use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Admin\GuruController;
