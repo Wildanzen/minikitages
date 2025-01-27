@@ -4,6 +4,7 @@ use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\SiswaController;
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('nilai', NilaiController::class);
     Route::resource('siswa', SiswaController::class);
     Route::resource('tugas', TugasController::class);
+    Route::resource('404', ErrorController::class);
 });
 
 // Authentication routes
