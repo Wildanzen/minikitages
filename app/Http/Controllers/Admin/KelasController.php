@@ -49,7 +49,14 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      */
+<<<<<<< HEAD
     public function show(Kelas $kelas) {}
+=======
+    public function show(Kelas $kelas)
+    {
+
+    }
+>>>>>>> 1ed82669190211d91a5dec399eb366033c500fd3
 
     /**
      * Show the form for editing the specified resource.

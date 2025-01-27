@@ -36,9 +36,9 @@ class TugasController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'tugas' => 'required|string',
             'guru_id' => 'required|exists:gurus,id',
             'materi_id' => 'required|exists:materis,id',
-            'tugas' => 'required|string',
         ]);
 
         Tugas::create($validated);
@@ -71,9 +71,9 @@ class TugasController extends Controller
     public function update(Request $request, Tugas $tugas)
     {
         $validated = $request->validate([
-            'guru_id' => 'required|exists:gurus,id,' . $tugas->id,
+            'tugas' => 'required|string,'. $tugas->id,
+            'guru_id' => 'required|exists:gurus,id',
             'materi_id' => 'required|exists:materis,id',
-            'tugas' => 'required|string',
         ]);
 
         $tugas->update($validated);
