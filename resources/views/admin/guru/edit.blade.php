@@ -1,36 +1,44 @@
 @extends('layouts.app_modern')
 
 @section('content')
-<div class="container mx-auto py-6">
-    <h1 class="text-2xl font-semibold mb-4">Edit Guru</h1>
+    <div class="card">
+        <h5 class="card-header">Edit Guru</h5>
+        <div class="card-body">
+            <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group mt-1 mb-3">
+                    <label for="nama_guru">Nama Guru</label>
+                    <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama"
+                        name="nama" value="{{ old('nama_guru') ?? $guru->nama_guru }}">
+                    <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
+                </div>
+                <div class="form-group mt-1 mb-3">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" class="form-control @error('status') is-invalid @enderror"
+                        required>
+                        <option value="aktif" {{ $guru->status == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                        <option value="nonaktif" {{ $guru->status == 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
+                    </select>
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                </div>
+                <div class="form-group mt-1 mb-3">
+                    <label for="umur">Umur</label>
+                    <input type="number" name="umur" id="umur"
+                        class="form-control @error('umur') is-invalid @enderror" value="{{ old('umur', $guru->umur) }}"
+                        required min="0">
+                    <span class="text-danger">{{ $errors->first('umur') }}</span>
+                </div>
 
-    <form action="{{ route('guru.update', $guru->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="mb-4">
-            <label for="nama_guru" class="block text-sm font-medium text-gray-700">Nama Guru</label>
-            <input type="text" name="nama_guru" id="nama_guru"
-                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                value="{{ old('nama_guru', $guru->nama_guru) }}" required>
+                <div class="form-group mt-1 mb-3">
+                    <label for="alamat">Alamat</label>
+                    <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" required>{{ old('alamat', $guru->alamat) }}</textarea>
+                    <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                </div>
+
+                 <div class="text-ml mt-4">
+                    <button type="submit" class="btn btn-primary">SIMPAN</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-4">
-            <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-            <select name="status" id="status" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                <option value="aktif" {{ $guru->status == 'aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="nonaktif" {{ $guru->status == 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
-            </select>
-        </div>
-        <div class="mb-4">
-            <label for="umur" class="block text-sm font-medium text-gray-700">Umur</label>
-            <input type="number" name="umur" id="umur" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                value="{{ old('umur', $guru->umur) }}" required min="0">
-        </div>
-        <div class="mb-4">
-            <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
-            <textarea name="alamat" id="alamat" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                required>{{ old('alamat', $guru->alamat) }}</textarea>
-        </div>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Simpan</button>
-    </form>
-</div>
-@endsection
+    @endsection

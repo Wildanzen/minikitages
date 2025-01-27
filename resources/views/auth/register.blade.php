@@ -6,36 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=PoPpins:wght@400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .online {
-            color: #51c7ee;
-            /* Light blue */
-        }
-
-        .text-online {
-            color: #0505ac;
-            /* Light blue for "Online" text */
-        }
-
-        .class {
-            color: #00eeff;
-            /* Light blue */
-        }
-
-        .text-class {
-            color: #08dce3;
-            /* Light blue for "Online" text */
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen">

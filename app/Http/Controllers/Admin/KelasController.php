@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Kelas;
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class KelasController extends Controller
 {
@@ -48,10 +49,7 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kelas $kelas)
-    {
-        
-    }
+    public function show(Kelas $kelas) {}
 
     /**
      * Show the form for editing the specified resource.
