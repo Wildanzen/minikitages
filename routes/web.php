@@ -10,11 +10,19 @@ use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
+use Illuminate\Support\Facades\Auth;
 
 // Landing page
 Route::get('/', function () {
     return view('landing.index');
 });
+
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('landing.index');
+})->name('logout');
+
 
 // Dashboard
 Route::get('/dashboard', function () {

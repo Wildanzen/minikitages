@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,7 +15,8 @@ return new class extends Migration
             $table->string('judul_tugas');
             $table->text('deskripsi')->nullable();
             $table->date('tanggal_deadline');
-            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade'); // Relasi ke kelas
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
             $table->timestamps();
         });
 
