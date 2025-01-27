@@ -8,13 +8,18 @@ class Tugas extends Model
 {
     protected $guarded = ['id'];
 
-    public function materis()
+    public function materi()
     {
         return $this->hasMany(Materi::class);
     }
 
-    public function gurus()
+    public function guru()
     {
         return $this->belongsTo(Guru::class);
+    }
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class);
     }
 }

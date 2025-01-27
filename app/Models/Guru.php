@@ -8,7 +8,7 @@ class Guru extends Model
 {
     protected $guarded = ['id'];
 
-    public function materis()
+    public function kelas()
     {
         return $this->hasMany(Materi::class);
     }
@@ -18,7 +18,7 @@ class Guru extends Model
         return $this->hasMany(Tugas::class);
     }
 
-    public function nilais()
+    public function nilai()
     {
         return $this->hasMany(nilai::class);
     }

@@ -8,11 +8,11 @@ class Nilai extends Model
 {
     protected $guarded = ['id'];
 
-    public function gurus()
+    public function guru()
     {
         return $this->hasMany(Guru::class);
     }
-    public function materis()
+    public function materi()
     {
         return $this->hasMany(Materi::class);
     }

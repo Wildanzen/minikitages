@@ -8,12 +8,12 @@ class Kelas extends Model
 {
     protected $guarded = ['id'];
 
-    public function gurus()
+    public function guru()
     {
-        return $this->hasMany(Guru::class);
+        return $this->belongsTo(Guru::class);
 
     }
-    public function siswas()
+    public function siswa()
     {
         return $this->hasMany(siswa::class);
     }

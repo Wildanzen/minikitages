@@ -12,16 +12,16 @@ class materi extends Model
     {
         return $this->hasMany(Tugas::class);
     }
-    public function gurus()
+    public function guru()
     {
         return $this->belongsTo(Guru::class);
     }
-    public function nilais()
+    public function nilai()
     {
         return $this->hasMany(nilai::class);
     }
 
-    public function siswas()
+    public function siswa()
     {
         return $this->hasMany(siswa::class);
     }
