@@ -15,8 +15,7 @@ return new class extends Migration {
             $table->string('judul_tugas');
             $table->text('deskripsi')->nullable();
             $table->date('tanggal_deadline');
-            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
-            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
+            $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade');
             $table->timestamps();
         });
 
