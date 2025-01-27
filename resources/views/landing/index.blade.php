@@ -34,7 +34,7 @@
       <a href="#" class="text-gray-600 hover:text-purple-600">Marketplace</a>
       <a href="#" class="text-gray-600 hover:text-purple-600">Company</a>
     </nav>
-    <a href="login" class="text-gray-600 hover:text-purple-600">Log in</a>
+    <a href="error" class="text-gray-600 hover:text-purple-600">About Us</a>
   </header>
 
   <main class="container mx-auto text-center py-16 px-4">
@@ -43,8 +43,8 @@
       Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
     </p>
     <div class="mt-8 flex justify-center space-x-4 animate-fadeIn" style="animation-delay: 0.4s;">
-      <a href="#" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700">Get started</a>
-      <a href="#" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold shadow-md hover:bg-gray-300">Learn more</a>
+      <a href="login" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700">Login</a>
+      <a href="register" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold shadow-md hover:bg-gray-300">Register</a>
     </div>
   </main>
 

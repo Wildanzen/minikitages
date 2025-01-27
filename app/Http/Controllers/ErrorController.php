@@ -12,7 +12,7 @@ class ErrorController extends Controller
      */
     public function index()
     {
-            return view('404.index');
+            return view('error.index');
     }
 
     /**

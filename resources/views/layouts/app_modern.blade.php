@@ -41,44 +41,44 @@
             }
         }
 
-        .ti-bell-ringing {
-            animation: shake 1.2s infinite;
-        }
+        /* Animasi pop-in untuk sidebar */
         @keyframes popIn {
-        0% {
-            transform: scale(0.8);
-            opacity: 0;
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        50% {
+
+        aside.left-sidebar {
+            animation: popIn 0.8s ease-out;
+        }
+
+        .sidebar-item a.sidebar-link:hover {
+            background: #5dcff2;
+            color: #fff;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
             transform: scale(1.05);
-            opacity: 0.5;
         }
-        100% {
-            transform: scale(1);
-            opacity: 1;
+
+        .sidebar-item a.sidebar-link.active {
+            background: #1a73e8;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+            transition: all 0.3s ease-in-out;
+            transform: translateX(5px);
         }
-    }
-
-    aside.left-sidebar {
-        animation: popIn 0.8s ease-out;
-    }
-    .sidebar-item a.sidebar-link:hover {
-        background: #5dcff2;
-        color: #fff;
-        border-radius: 8px;
-        transition: all 0.3s ease-in-out;
-        transform: scale(1.05);
-    }
-
-    /* Animasi saat item sidebar dipilih */
-    .sidebar-item a.sidebar-link.active {
-        background: #1a73e8;
-        color: #fff;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
-        transition: all 0.3s ease-in-out;
-        transform: translateX(5px);
-    }
 
         @keyframes shake {
 
@@ -100,6 +100,10 @@
             }
         }
 
+        .ti-bell-ringing {
+            animation: shake 1.2s infinite;
+        }
+
         nav.navbar {
             animation: slideIn 1s ease-out;
         }
@@ -119,6 +123,7 @@
             transition: color 0.3s ease-in-out;
         }
 
+        /* Animasi bounce pada logo */
         .brand-logo img {
             animation: bounce 2s infinite;
         }
@@ -145,9 +150,88 @@
         .brand-logo img:hover {
             transform: scale(1.1);
             transition: transform 0.3s ease;
+        }
 
+        /* Animasi untuk tombol */
+        .btn {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #1a73e8;
+            color: #fff;
+        }
+
+        /* Animasi pada elemen kartu */
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animasi untuk munculnya elemen di layar */
+        .fade-up {
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animasi untuk link yang meluncur */
+        .slide-link {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #5dcff2;
+            bottom: 0;
+            left: -100%;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .slide-link:hover::after {
+            left: 0;
+        }
+
+        /* Animasi untuk logo */
+        .logo-animation {
+            animation: rotateLogo 2s ease-in-out infinite;
+        }
+
+        @keyframes rotateLogo {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
+
 </head>
 
 <body>

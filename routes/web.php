@@ -44,7 +44,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('nilai', NilaiController::class);
     Route::resource('siswa', SiswaController::class);
     Route::resource('tugas', TugasController::class);
-    Route::resource('404', ErrorController::class);
+    Route::resource('error', ErrorController::class);
 });
 
 // Authentication routes
