@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="modern/src/assets/css/styles.min.css" />
     <style>
         body {
-            background: linear-gradient(to right, #ffffff, #61daff);
+            background: linear-gradient(to right, #ffffff, #5dcff2);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -44,6 +44,41 @@
         .ti-bell-ringing {
             animation: shake 1.2s infinite;
         }
+        @keyframes popIn {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    aside.left-sidebar {
+        animation: popIn 0.8s ease-out;
+    }
+    .sidebar-item a.sidebar-link:hover {
+        background: #5dcff2;
+        color: #fff;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.05);
+    }
+
+    /* Animasi saat item sidebar dipilih */
+    .sidebar-item a.sidebar-link.active {
+        background: #1a73e8;
+        color: #fff;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+        transition: all 0.3s ease-in-out;
+        transform: translateX(5px);
+    }
 
         @keyframes shake {
 
@@ -124,31 +159,33 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="/siswa-offline" class="text-nowrap logo-img">
-                <div id="logo-container" class="d-flex justify-content-center align-items-center">
-                    <img id="logo" src="https://pkl.hummatech.com/logopkldark.png" class="dark-logo" width="180" alt="" style="">
-                </div>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
-                $(document).ready(function() {
-                    var logo = $('#logo');
-                    var newSrc = "https://pkl.hummatech.com/logopkldark.png";
-                    var newWidth = "180";
+                    <a href="/siswa-offline" class="text-nowrap logo-img">
+                        <div id="logo-container" class="d-flex justify-content-center align-items-center">
+                            <img id="logo" src="https://pkl.hummatech.com/logopkldark.png" class="dark-logo"
+                                width="180" alt="" style="">
+                        </div>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script>
+                            $(document).ready(function() {
+                                var logo = $('#logo');
+                                var newSrc = "https://pkl.hummatech.com/logopkldark.png";
+                                var newWidth = "180";
 
-                    setTimeout(function() {
-                        logo.fadeOut(1000, function() {
-                            logo.attr('src', newSrc);
-                            logo.attr('width', newWidth);
-                            logo.fadeIn(1000);
-                        });
-                    }, 2500);
-                });
-                </script> <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png" class="light-logo" width="180" alt="" style="display: none;">
-            </a>
-            <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-                <i class="ti ti-x fs-8 text-muted text-primary"></i>
-            </div>
-        </div>
+                                setTimeout(function() {
+                                    logo.fadeOut(1000, function() {
+                                        logo.attr('src', newSrc);
+                                        logo.attr('width', newWidth);
+                                        logo.fadeIn(1000);
+                                    });
+                                }, 2500);
+                            });
+                        </script> <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png"
+                            class="light-logo" width="180" alt="" style="display: none;">
+                    </a>
+                    <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8 text-muted text-primary"></i>
+                    </div>
+                </div>
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
@@ -201,7 +238,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./nilai" aria-expanded="false">
                                 <span>
-                                 <span><i class="ti ti-check"></i></span>
+                                    <span><i class="ti ti-check"></i></span>
                                 </span>
                                 <span class="hide-menu">Nilai</span>
                             </a>
@@ -209,7 +246,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./materi" aria-expanded="false">
                                 <span>
-                               <span><i class="ti ti-book"></i></span>
+                                    <span><i class="ti ti-book"></i></span>
                                 </span>
                                 <span class="hide-menu">Materi</span>
                             </a>
@@ -306,8 +343,23 @@
                                             <i class="ti ti-list-check fs-6"></i>
                                             <p class="mb-0 fs-3">My Task</p>
                                         </a>
-                                        <a href="{{ route('logout') }}"
-                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a href="javascript:void(0);" class="btn btn-outline-primary mx-3 mt-2 d-block"onclick="confirmLogout()">
+                                                {{ __('Log Out') }}
+                                            </a>
+                                        </form>
+
+                                        <script>
+                                            function confirmLogout() {
+                                                // Menampilkan konfirmasi logout
+                                                if (confirm('Apakah Anda Ingin Logout?')) {
+                                                    // Jika user mengkonfirmasi, form akan disubmit
+                                                    document.getElementById('logout-form').submit();
+                                                }
+                                            }
+                                        </script>
+
                                     </div>
                                 </div>
                             </li>

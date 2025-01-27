@@ -4,11 +4,11 @@
 <div class="container mx-auto py-6">
     <h1 class="text-2xl font-semibold mb-4">Daftar Guru</h1>
 
-    <a href="{{ route('admin.guru.create') }}"
-        class="bg-blue-500 text-white px-4 py-2 rounded-md mb-4 inline-block">Tambah Guru</a>
+    <a href="{{ route('guru.create') }}"
+        class="bg-blue-500 text-black px-4 py-2 rounded-md mb-4 inline-block">Tambah Guru</a>
 
     @if(session('success'))
-        <div class="bg-green-500 text-white p-4 rounded-md mb-4">
+        <div class="bg-green-500 text-blue p-4 rounded-md mb-4">
             {{ session('success') }}
         </div>
     @endif
@@ -16,7 +16,7 @@
     <table class="min-w-full bg-white shadow-md rounded-md overflow-hidden">
         <thead>
             <tr>
-                <th class="py-2 px-4 border-b text-left">#</th>
+                <th class="py-2 px-4 border-b text-left">ID</th>
                 <th class="py-2 px-4 border-b text-left">Nama Guru</th>
                 <th class="py-2 px-4 border-b text-left">Status</th>
                 <th class="py-2 px-4 border-b text-left">Umur</th>
@@ -33,8 +33,8 @@
                     <td class="py-2 px-4 border-b">{{ $item->umur }}</td>
                     <td class="py-2 px-4 border-b">{{ $item->alamat }}</td>
                     <td class="py-2 px-4 border-b">
-                        <a href="{{ route('admin.guru.edit', $item->id) }}" class="text-yellow-500">Edit</a>
-                        <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('guru.edit', $item->id) }}" class="text-yellow-500">Edit</a>
+                        <form action="{{ route('guru.destroy', $item->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500"
