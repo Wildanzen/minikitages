@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->integer('nilai');
-            $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade'); // Relasi ke siswa
-            $table->foreignId('tugas_id')->constrained('tugas')->onDelete('cascade'); // Relasi ke tugas
+            $table->integer('nilai');    
+            $table->foreignId('guru_id')->constrained('guru')->onDelete('cascade'); 
+            $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade');
+            $table->foreignId('tugas_id')->constrained('tugas')->onDelete('cascade'); 
             $table->timestamps();
         });
 
