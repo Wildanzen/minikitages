@@ -169,7 +169,7 @@
                             <span class="hide-menu">UI COMPONENTS</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/guru" aria-expanded="false">
+                            <a class="sidebar-link" href="./guru" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
@@ -177,13 +177,13 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href=".Kelas" aria-expanded="false">
+                            <a class="sidebar-link" href="./kelas" aria-expanded="false">
                                 <span><i class="ti ti-home"></i></span>
                                 <span class="hide-menu">Kelas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./siswa" aria-expanded="false">
+                            <a class="sidebar-link" href="/siswa" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-users"></i>
                                 </span>
