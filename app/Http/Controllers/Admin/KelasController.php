@@ -27,7 +27,7 @@ class KelasController extends Controller
         $guru = Guru::all();
         $siswa = Siswa::all();
 
-        return view('admin.kelas.create', compact('guru', 'siswa'));
+        return view('kelas.create', compact('guru', 'siswa'));
     }
 
     /**
@@ -38,7 +38,7 @@ class KelasController extends Controller
         $validated = $request->validate([
             'nama_kelas' => 'required|string|unique:kelas',
             'guru_id' => 'required|exists:gurus,id',
-            'siswa_id' => 'required|exists:siswas,id',
+            'siswa_id' => 'required|exists:siswa,id',
         ]);
 
         Kelas::create($validated);
@@ -51,7 +51,7 @@ class KelasController extends Controller
      */
     public function show(Kelas $kelas)
     {
-        
+
     }
     /**
      * Show the form for editing the specified resource.

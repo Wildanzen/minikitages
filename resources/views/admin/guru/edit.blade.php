@@ -9,8 +9,8 @@
                 @method('PUT')
                 <div class="form-group mt-1 mb-3">
                     <label for="nama_guru">Nama Guru</label>
-                    <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama"
-                        name="nama" value="{{ old('nama_guru') ?? $guru->nama_guru }}">
+                    <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama_guru"
+                        name="nama_guru" name="nama" value="{{ old('nama_guru') ?? $guru->nama_guru }}">
                     <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                 </div>
                 <div class="form-group mt-1 mb-3">
@@ -36,7 +36,7 @@
                     <span class="text-danger">{{ $errors->first('alamat') }}</span>
                 </div>
 
-                 <div class="text-ml mt-4">
+                <div class="text-ml mt-4">
                     <button type="submit" class="btn btn-primary">SIMPAN</button>
                 </div>
             </form>

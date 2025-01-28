@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('modern/src/assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('modern/src/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -139,8 +140,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="modern/src/assets/images/profile/user-1.jpg" alt=""
-                                        width="35" height="35" class="rounded-circle">
+                                    <img src="{{ asset('modern/src/assets/images/profile/user-1.jpg') }}"
+                                        alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
@@ -162,11 +163,10 @@
                                         </a>
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <a href="javascript:void(0);"
-                                                class="btn btn-outline-primary mx-3 mt-2 d-block"
-                                                onclick="confirmLogout()">
+                                            <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block">
                                                 {{ __('Log Out') }}
-                                            </a>
+                                            </button>
+                                        </form>
                                         </form>
                                     </div>
                                 </div>
@@ -190,6 +190,8 @@
     <script src="{{ asset('modern/src/assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('modern/src/assets/js/app.min.js') }}"></script>
     <script src="{{ asset('modern/src/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>

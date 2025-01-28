@@ -105,7 +105,7 @@
             formContainer.classList.add('clicked');
             setTimeout(() => {
                 formContainer.classList.remove('clicked');
-            }, 3000); // Remove zoom effect after 0.3 seconds
+            }, 1000); // Remove zoom effect after 0.3 seconds
         });
     </script>
 </body>
