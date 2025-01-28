@@ -4,7 +4,6 @@ use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\ProfileController;

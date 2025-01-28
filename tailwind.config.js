@@ -7,6 +7,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue', // Jika Anda menggunakan Vue.js
     ],
 
     theme: {
@@ -14,8 +15,14 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: '#1D4ED8', // Tambahkan warna kustom jika diperlukan
+                secondary: '#9333EA', // Contoh warna tambahan
+            },
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms, // Form plugin untuk Tailwind CSS
+    ],
 };
