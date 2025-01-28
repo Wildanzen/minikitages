@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\siswa;
-use App\Models\Guru;
-use App\Models\Materi;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -15,7 +13,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::with(['guru', 'materi'])->get();
+        $siswas = Siswa::all();
         return view('admin.siswa.index', compact('siswa'));
     }
 
@@ -24,9 +22,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        $guru = Guru::all();
-        $materi = Materi::all();
-        return view('admin.siswa.create', compact('guru', 'materi'));
+        return view('admin.siswa.create');
     }
 
     /**
@@ -39,8 +35,6 @@ class SiswaController extends Controller
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
-            'guru_id' => 'required|exists:gurus,id',
-            'materi_id' => 'required|exists:materis,id',
         ]);
 
         Siswa::create($validated);
@@ -61,10 +55,8 @@ class SiswaController extends Controller
      */
     public function edit(siswa $siswa)
     {
-        $gurus = Guru::all();
-        $materis = Materi::all();
 
-        return view('admin.siswa.edit', compact('siswa', 'guru', 'materi'));
+        return view('admin.siswa.edit', compact('siswa'));
     }
 
     /**
@@ -77,8 +69,6 @@ class SiswaController extends Controller
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
-            'guru_id' => 'required|exists:gurus,id',
-            'materi_id' => 'required|exists:materis,id',
         ]);
 
         $siswa->update($validated);

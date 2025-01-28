@@ -3,11 +3,6 @@
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-use App\Http\Controllers\Admin\KelasController;
-use App\Http\Controllers\ProfileController;
-=======
->>>>>>> 1bd0fd325a89304e1ebc2fc121ec0db3af336a5e
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\ProfileController;
