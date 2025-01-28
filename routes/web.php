@@ -16,19 +16,13 @@ use App\Http\Controllers\Admin\MateriController;
 // Landing page
 Route::get('/', function () {
     return view('landing.index');
-});
+})->name('landing.index');
 
-
+// Logout
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('landing.index');
 })->name('logout');
-
-
-// Dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 // Profile routes
 Route::middleware('auth')->group(function () {
@@ -39,6 +33,12 @@ Route::middleware('auth')->group(function () {
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {
+    // Dashboard (khusus admin)
+    Route::get('/dashboard', function () {
+        return view('dashboard'); // Pastikan ini adalah view dashboard admin
+    })->name('dashboard');
+
+    // CRUD untuk admin
     Route::resource('guru', GuruController::class);
     Route::resource('kelas', KelasController::class);
     Route::resource('materi', MateriController::class);
