@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($siswas as $siswa)
+            @foreach ($siswa as $siswa)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $siswa->nama_siswa }}</td>

@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class siswa extends Model
 {
+
+    protected $table = 'siswa';
     protected $guarded = ['id'];
 
-    public function materis()
+    public function materi()
     {
         return $this->belongsTo(Materi::class);
     }

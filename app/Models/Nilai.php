@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nilai extends Model
 {
+    protected $table = 'nilai';
     protected $guarded = ['id'];
 
     public function guru()
@@ -22,5 +23,5 @@ class Nilai extends Model
         return $this->hasMany(Tugas::class);
     }
 
-    
+
 }

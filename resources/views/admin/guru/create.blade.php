@@ -11,7 +11,7 @@
                     <div class="col-md-6 form-group mb-3">
                         <label for="nama_guru">Nama Guru</label>
                         <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama_guru"
-                               name="nama_guru" value="{{ old('nama_guru') }}">
+                            name="nama_guru" value="{{ old('nama_guru') }}">
                         <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                     </div>
                     <!-- Status -->

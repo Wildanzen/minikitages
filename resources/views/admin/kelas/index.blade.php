@@ -27,7 +27,7 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_kelas }}</td>
-                                <td>{{ $item->guru->nama }}</td>
+                                <td>{{ $item->guru->nama_guru }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('kelas.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
