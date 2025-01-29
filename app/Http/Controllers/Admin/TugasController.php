@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tugas;
-use App\Models\Materi;
+use App\Models\Kelas;
 use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -25,9 +25,9 @@ class TugasController extends Controller
     public function create()
     {
         $guru = Guru::all();
-        $materi = Materi::all();
+        $kelas = Kelas::all();
 
-        return view('admin.tugas.create', compact('guru', 'materi'));
+        return view('admin.tugas.create', compact('guru', 'kelas'));
     }
 
     /**
@@ -60,9 +60,9 @@ class TugasController extends Controller
     public function edit(Tugas $tugas)
     {
         $guru = Guru::all();
-        $materi = Materi::all();
+        $Kelas = Kelas::all();
 
-        return view('admin.tugas.edit', compact('tugas', 'guru', 'materi'));
+        return view('admin.tugas.edit', compact('tugas', 'guru', 'kelas'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TugasController extends Controller
     public function update(Request $request, Tugas $tugas)
     {
         $validated = $request->validate([
-            'tugas' => 'required|string,'. $tugas->id,
+            'tugas' => 'required|string,' . $tugas->id,
             'guru_id' => 'required|exists:gurus,id',
             'materi_id' => 'required|exists:materis,id',
         ]);

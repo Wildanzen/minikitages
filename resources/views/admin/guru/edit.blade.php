@@ -1,9 +1,36 @@
 @extends('layouts.app_modern')
 
 @section('content')
+<style>
+        .bg-grey {
+            background-color: #ededed;
+            /* Warna ungu */
+            color: white;
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
+
     <div class="card">
-        <h5 class="card-header">Edit Guru</h5>
+        <h5 class="card-header bg-grey text-black">edit guru</h5>
         <div class="card-body">
+
             <form action="{{ route('guru.update', $guru->id) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -37,7 +64,7 @@
                 </div>
 
                 <div class="text-ml mt-4">
-                    <button type="submit" class="btn btn-primary">SIMPAN</button>
+                    <button type="submit" class="btn btn-warning">SIMPAN</button>
                 </div>
             </form>
         </div>

@@ -1,8 +1,32 @@
 @extends('layouts.app_modern')
-
 @section('content')
+<style>
+        .bg-grey {
+            background-color: #ffffff;
+            /* Warna ungu */
+            color: white;
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
     <div class="card">
-        <h5 class="card-header">Daftar Siswa</h5>
+      <h4 class="card-header bg-grey text-black">Daftar Siswa</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
                 <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>

@@ -14,6 +14,26 @@
 </head>
 
 <body>
+    <style>
+    /* CSS untuk background GIF animasi */
+    body {
+        background: url('{{ asset('gambar/kapalterbang.gif') }}') no-repeat center center fixed;
+        background-size: 30% auto; /* Memperkecil ukuran background */
+        background-position: right 20% bottom; /* Arahkan ke kanan dan turunkan ke bawah */
+        animation: backgroundAnimation 5s infinite; /* Optional: atur durasi animasi */
+    }
+
+    @keyframes backgroundAnimation {
+        0% {
+            background-position: right 30% bottom; /* Mulai dari kanan dan bawah */
+        }
+        100% {
+            background-position: right 20% bottom; /* Tetap di kanan dan bawah */
+        }
+    }
+
+</style>
+
     <!-- Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -33,7 +53,6 @@
                         <i class="ti ti-x fs-8 text-muted text-primary"></i>
                     </div>
                 </div>
-
                 <!-- Sidebar navigation -->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">

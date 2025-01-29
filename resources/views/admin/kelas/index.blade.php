@@ -1,8 +1,32 @@
 @extends('layouts.app_modern')
-
 @section('content')
+<style>
+        .bg-grey {
+            background-color: #ffffff;
+            /* Warna ungu */
+            color: rgb(255, 255, 255);
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
     <div class="card">
-        <h5 class="card-header">Daftar Kelas</h5>
+         <h4 class="card-header bg-grey text-black">Daftar Kelas</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
                 <a href="{{ route('kelas.create') }}" class="btn btn-primary">Tambah Data</a>
@@ -25,7 +49,7 @@
                     @else
                         @foreach ($kelas as $item)
                             <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-start">{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_kelas }}</td>
                                 <td>{{ $item->guru->nama_guru }}</td>
                                 <td class="text-center">

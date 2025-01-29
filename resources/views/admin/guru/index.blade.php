@@ -1,8 +1,34 @@
 @extends('layouts.app_modern')
 
 @section('content')
+    <style>
+        .bg-grey {
+            background-color: #ffffff;
+            /* Warna ungu */
+            color: white;
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
+
     <div class="card">
-        <h5 class="card-header">Daftar Guru</h5>
+        <h4 class="card-header bg-grey text-black">Daftar Guru</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
                 <a href="{{ route('guru.create') }}" class="btn btn-primary">Tambah Data</a>
@@ -22,20 +48,23 @@
                 <tbody>
                     @if ($guru->isEmpty())
                         <tr>
-                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data guru ini belum tersedia--</td>
+                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data guru ini belum
+                                tersedia--</td>
                         </tr>
                     @else
                         @foreach ($guru as $item)
                             <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-start">{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_guru }}</td>
                                 <td>{{ $item->status }}</td>
                                 <td>{{ $item->umur }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('guru.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form action="{{ route('guru.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                        <a href="{{ route('guru.edit', $item->id) }}"
+                                            class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('guru.destroy', $item->id) }}" method="POST"
+                                            style="display:inline;">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm"
