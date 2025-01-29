@@ -32,8 +32,14 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required','min:8', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'password.required' => 'Kata sandi tidak boleh kosong.',
+            'password.min' => 'Kata sandi harus minimal :min karakter.',
+            'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
         ]);
+
+        // dd($request->all());
 
         $user = User::create([
             'name' => $request->name,

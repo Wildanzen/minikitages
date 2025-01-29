@@ -9,27 +9,27 @@
         @import url('https://fonts.googleapis.com/css2?family=PoPpins:wght@400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-size: cover; /* Ensures the image covers the entire background */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .online {
-            color: #51c7ee; /* Light blue */
+            color: #51c7ee;
         }
         .text-online {
-            color: #0505ac; /* Light blue for "Online" text */
+            color: #0505ac;
         }
         .class {
-            color: #00eeff; /* Light blue */
+            color: #00eeff;
         }
         .text-class {
-            color: #08dce3; /* Light blue for "Online" text */
+            color: #08dce3;
         }
         .form-container {
-            transition: transform 0.3s ease; /* Smooth zoom effect */
+            transition: transform 0.3s ease;
         }
         .form-container.clicked {
-            transform: scale(1.05); /* Zoom in */
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -40,6 +40,9 @@
         </h2>
         <p class="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">Please log in to your account</p>
 
+        <!-- Alert -->
+        <div id="alert-container" class="hidden p-4 mb-4 text-sm rounded-lg" role="alert"></div>
+
         <!-- Form -->
         <form method="POST" action="{{ route('login') }}" class="mt-6" id="login-form">
             @csrf
@@ -47,11 +50,8 @@
             <!-- Email -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}"  autofocus autocomplete="username"
+                <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="username"
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
-                @error('email')
-                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-                @enderror
             </div>
 
             <!-- Password -->
@@ -65,9 +65,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
                 </button>
-                @error('password')
-                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-                @enderror
             </div>
 
             <!-- Forgot Password Link -->
@@ -100,6 +97,61 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('login-form');
+            const alertContainer = document.getElementById('alert-container');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                alertContainer.classList.add('hidden'); // Reset alert visibility
+                alertContainer.textContent = ''; // Clear alert message
+
+                // Email validation
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (!email) {
+                    showAlert('Email tidak boleh kosong.', 'red');
+                    return;
+                } else if (!emailPattern.test(email)) {
+                    showAlert('Format email tidak valid.', 'red');
+                    return;
+                }
+
+                // Password validation
+                if (!password) {
+                    showAlert('Password tidak boleh kosong.', 'red');
+                    return;
+                } else if (password.length < 8) {
+                    showAlert('Kata sandi harus minimal 8 karakter.', 'red');
+                    return;
+                }
+
+                // Simulate incorrect email/password (for demonstration purposes)
+                if (email !== '' && password !== '') {
+                    showAlert('Email atau password salah.', 'red');
+                    return;
+                    
+                // Lanjutkan ke proses form submission
+                } else {
+                    showAlert('Email atau password salah.', 'red');
+                    return;
+                }
+
+
+                alertContainer.classList.add('hidden');
+                form.submit(); // Submit the form
+            });
+
+            function showAlert(message, color) {
+                alertContainer.textContent = message;
+                alertContainer.classList.remove('hidden');
+                alertContainer.className = `p-4 mb-4 text-sm rounded-lg bg-${color}-50 text-${color}-800 border border-${color}-400`;
+            }
+        });
+
         // Toggle password visibility
         function togglePassword() {
             const passwordField = document.getElementById('password');
