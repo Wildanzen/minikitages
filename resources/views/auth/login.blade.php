@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -45,13 +47,14 @@
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 h-screen flex items-center justify-center">
+
     <div id="form-container" class="form-container max-w-sm w-full bg-white dark:bg-gray-800 shadow-lg rounded-3xl p-6">
         <h2 class="text-2xl font-bold text-center text-gray-700 dark:text-gray-200">
             <span class="text-online">Online</span> <span class="text-class">Class</span>
         </h2>
         <p class="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">Please log in to your account</p>
 
-        <!-- Alert -->
+        <!-- Alert Container -->
         <div id="alert-container" class="hidden p-4 mb-4 text-sm rounded-lg" role="alert"></div>
 
         <!-- Form -->
@@ -75,12 +78,9 @@
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
                 <button type="button" onclick="togglePassword()"
                     class="absolute right-3 top-9 text-gray-500 dark:text-gray-400">
-                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
                 </button>
             </div>
@@ -112,42 +112,56 @@
             const form = document.getElementById('login-form');
             const alertContainer = document.getElementById('alert-container');
 
+            // Submit handler
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // Prevent form submission
 
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
 
-                alertContainer.classList.add('hidden'); // Reset alert visibility
-                alertContainer.textContent = ''; // Clear alert message
-
                 // Email validation
                 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
                 if (!email) {
-                    showAlert('Email tidak boleh kosong.', 'red');
+                    showAlert('Email tidak boleh kosong.', 'error');
                     return;
                 } else if (!emailPattern.test(email)) {
-                    showAlert('Format email tidak valid.', 'red');
+                    showAlert('Format email tidak valid.', 'error');
                     return;
                 }
 
                 // Password validation
                 if (!password) {
-                    showAlert('Password tidak boleh kosong.', 'red');
+                    showAlert('Password tidak boleh kosong.', 'error');
                     return;
                 } else if (password.length < 8) {
-                    showAlert('Kata sandi harus minimal 8 karakter.', 'red');
+                    showAlert('Kata sandi harus minimal 8 karakter.', 'error');
                     return;
                 }
 
-                alertContainer.classList.add('hidden');
+                // Submit the form if everything is valid
+                alertContainer.classList.add('hidden'); // Reset alert visibility
                 form.submit(); // Submit the form
             });
 
-            function showAlert(message, color) {
-                alertContainer.textContent = message;
-                alertContainer.classList.remove('hidden');
-                alertContainer.className = `p-4 mb-4 text-sm rounded-lg bg-${color}-50 text-${color}-800 border border-${color}-400`;
+            @if ($errors->any())
+                // Menampilkan SweetAlert2 jika ada error (login gagal)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Gagal',
+                    text: "{{ $errors->first() }}", // Menampilkan pesan error pertama (email/password salah)
+                    showConfirmButton: true,
+                    confirmButtonColor: '#d33',
+                });
+            @endif
+
+            function showAlert(message, type) {
+                Swal.fire({
+                    icon: type, // 'success' or 'error'
+                    title: type === 'success' ? 'Berhasil!' : 'Gagal!',
+                    text: message,
+                    showConfirmButton: true,
+                    confirmButtonColor: type === 'success' ? '#3085d6' : '#d33',
+                });
             }
         });
 

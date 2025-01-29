@@ -37,9 +37,12 @@ class GuruController extends Controller
             'umur' => 'required|integer|min:1',
             'alamat' => 'required|string',
         ]);
-        Guru::create($validated);
-
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil dibuat.');
+        try {
+            Guru::create($request->all());
+            return redirect()->route('guru.index')->with('success', 'Guru berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan! Guru gagal ditambahkan.');
+        } 
     }
 
     /**
