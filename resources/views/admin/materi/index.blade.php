@@ -1,50 +1,75 @@
 @extends('layouts.app_modern')
 
 @section('content')
-<div class="container py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-                <h2 class="text-2xl font-semibold mb-6">Daftar Materi</h2>
-                <a href="{{ route('materi.create') }}"
-                    class="bg-blue-500 text-white px-4 py-2 rounded-md mb-4">Tambah Materi</a>
-                @if(session('success'))
-                    <div class="bg-green-500 text-white p-4 rounded-md mb-4">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <table class="min-w-full bg-white shadow-md rounded-md overflow-hidden">
-                    <thead>
+    <div class="card">
+        <h5 class="card-header">Daftar Materi</h5>
+        <div class="card-body">
+            <div class="mb-3 d-flex justify-content-between align-items-center">
+                <a href="{{ route('materi.create') }}" class="btn btn-primary">Tambah Materi</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Materi...">
+            </div>
+            <table id="dataKelasTable" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-start">No</th>
+                        <th>Judul Materi</th>
+                        <th>Nama Kelas</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($materi->isEmpty())
                         <tr>
-                            <th class="py-2 px-4 border-b text-left">#</th>
-                            <th class="py-2 px-4 border-b text-left">Judul Materi</th>
-                            <th class="py-2 px-4 border-b text-left">Kelas</th>
-                            <th class="py-2 px-4 border-b text-left">Aksi</th>
+                            <td colspan="4" style="text-align: center; padding-right: 120px;">--Data  belum tersedia--</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($materi as $item)
+                    @else
+                        @foreach ($materi as $item)
                             <tr>
-                                <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
-                                <td class="py-2 px-4 border-b">{{ $item->judul_materi }}</td>
-                                <td class="py-2 px-4 border-b">{{ $item->kelas->nama_kelas }}</td>
-                                <td class="py-2 px-4 border-b">
-                                    <a href="{{ route('admin.materi.edit', $item->id) }}" class="text-yellow-500">Edit</a>
-                                    <form action="{{ route('admin.materi.destroy', $item->id) }}" method="POST"
-                                        style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-500"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus materi ini?')">Hapus</button>
-                                    </form>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td>{{ $item->judul_materi }}</td>
+                                <td>{{ $item->kelas->nama_kelas }}</td>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('admin.materi.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('admin.materi.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Inisialisasi DataTable
+                var table = $('#dataMateriTable').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data per halaman",
+                        zeroRecords: "Tidak ada data ditemukan",
+                        info: "Menampilkan _PAGE_ dari _PAGES_ halaman",
+                        infoEmpty: "Tidak ada data tersedia",
+                        infoFiltered: "(difilter dari _MAX_ total data)"
+                    }
+                });
+
+                // Custom Search di luar tabel
+                $('#searchInput').on('keyup', function() {
+                    table.search(this.value).draw();
+                });
+            });
+        </script>
+    @endpush
 @endsection

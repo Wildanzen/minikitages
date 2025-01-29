@@ -1,48 +1,83 @@
 @extends('layouts.app_modern')
 
 @section('content')
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-        <h1>Daftar Siswa</h1>
-        <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Siswa</a>
+    <div class="card">
+        <h5 class="card-header">Daftar Siswa</h5>
+        <div class="card-body">
+            <div class="mb-3 d-flex justify-content-between align-items-center">
+                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
+            </div>
+            <table id="dataGuruTable" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Alamat</th>
+                        <th>Status</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($siswa->isEmpty())
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data siswa ini belum
+                                tersedia--</td>
+                        </tr>
+                    @else
+                        @foreach ($siswa as $siswas)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td>{{ $siswas->nama_siswa }}</td>
+                                <td>{{ $siswas->kelas }}</td>
+                                <td>{{ $siswas->alamat }}</td>
+                                <td>{{ ucfirst($siswas->status) }}</td>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('siswa.edit', $item->id) }}"
+                                            class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('siswa.destroy', $item->id) }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Anda yakin ?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    @if (session('success'))
-        <div class="alert alert-success mt-3">
-            {{ session('success') }}
-        </div>
-    @endif
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Inisialisasi DataTable
+                var table = $('#dataSiswaTable').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data per halaman",
+                        zeroRecords: "Tidak ada data ditemukan",
+                        info: "Menampilkan _PAGE_ dari _PAGES_ halaman",
+                        infoEmpty: "Tidak ada data tersedia",
+                        infoFiltered: "(difilter dari _MAX_ total data)"
+                    }
+                });
 
-    <table class="table table-striped mt-4">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nama Siswa</th>
-                <th>Kelas</th>
-                <th>Alamat</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($siswa as $siswa)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $siswa->nama_siswa }}</td>
-                    <td>{{ $siswa->kelas }}</td>
-                    <td>{{ $siswa->alamat }}</td>
-                    <td>{{ ucfirst($siswa->status) }}</td>
-                    <td>
-                        <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('siswa.destroy', $siswa->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                // Custom Search di Luar Tabel
+                $('#searchInput').on('keyup', function() {
+                    table.search(this.value).draw();
+                });
+            });
+        </script>
+    @endpush
 @endsection
