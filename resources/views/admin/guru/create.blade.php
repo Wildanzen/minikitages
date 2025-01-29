@@ -26,6 +26,7 @@
 
         }
     </style>
+    
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah guru</h5>
         <div class="card-body">
@@ -73,5 +74,14 @@
                 </div>
             </form>
         </div>
+        <script>
+            setTimeout(function () {
+                document.querySelectorAll('.alert').forEach(alert => {
+                    alert.style.transition = "opacity 0.5s";
+                    alert.style.opacity = "0";
+                    setTimeout(() => alert.remove(), 500);
+                });
+            }, 3000);
+        </script>
     </div>
 @endsection

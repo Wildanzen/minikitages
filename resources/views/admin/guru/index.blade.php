@@ -27,6 +27,18 @@
         }
     </style>
 
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="card">
         <h4 class="card-header bg-grey text-black">Daftar Guru</h4>
         <div class="card-body">
@@ -104,6 +116,15 @@
                     table.search(this.value).draw();
                 });
             });
+        </script>
+        <script>
+            setTimeout(function () {
+                document.querySelectorAll('.alert').forEach(alert => {
+                    alert.style.transition = "opacity 0.5s";
+                    alert.style.opacity = "0";
+                    setTimeout(() => alert.remove(), 500);
+                });
+            }, 3000);
         </script>
     @endpush
 @endsection
