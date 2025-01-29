@@ -1,0 +1,20 @@
+
+        body {
+        background: linear-gradient(to right, #ffffff, #5dcff2);
+        }
+
+        #chart {
+            background-color: #ffffff; /* Latar belakang grafik */
+            padding: 20px; /* Padding untuk grafik */
+            border-radius: 20px; /* Sudut melengkung yang lebih tumpul */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek kedalaman */
+            width: 65%; /* Lebar default 100% */
+            max-width: 90%; /* Membatasi lebar maksimal agar bisa responsif */
+            margin-left: -18px;  /* Menambahkan margin kiri untuk menggeser ke kiri */
+            margin-top: -10px; /* Perbaiki typo di margin-top */
+        }
+
+        /* Optional: Adjust container spacing */
+        .container {
+            padding-top: 0; /* Menghapus padding atas */
+        }

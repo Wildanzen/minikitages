@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=PoPpins:wght@400;600&display=swap');
 
@@ -32,10 +33,14 @@
             color: #08dce3;
         }
     </style>
+
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+
+    
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen">
-    <div class="max-w-sm w-full bg-white dark:bg-gray-800 shadow-lg rounded-3xl p-6">
+    <div id="form-container" class="max-w-sm w-full bg-white dark:bg-gray-800 shadow-lg rounded-3xl p-6">
         <h2 class="text-2xl font-bold text-center text-gray-700 dark:text-gray-200">
             <span class="text-online">Online</span> <span class="text-class">Class</span>
         </h2>
@@ -86,6 +91,7 @@
     </div>
 
     <script>
+
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('registerForm');
             const alertContainer = document.getElementById('alert-container');
@@ -139,6 +145,39 @@
             }
         });
     </script>
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function(e) {
+        const passwordField = document.getElementById('password');
+        const eyeClosed = document.getElementById('eyeClosed');
+        const eyeOpen = document.getElementById('eyeOpen');
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+        eyeClosed.classList.toggle('hidden');
+        eyeOpen.classList.toggle('hidden');
+    });
+
+    // Toggle confirm password visibility
+    document.getElementById('toggleConfirmPassword').addEventListener('click', function(e) {
+        const confirmPasswordField = document.getElementById('password_confirmation');
+        const eyeClosedConfirm = document.getElementById('eyeClosedConfirm');
+        const eyeOpenConfirm = document.getElementById('eyeOpenConfirm');
+        const type = confirmPasswordField.type === 'password' ? 'text' : 'password';
+        confirmPasswordField.type = type;
+        eyeClosedConfirm.classList.toggle('hidden');
+        eyeOpenConfirm.classList.toggle('hidden');
+    });
+
+    // Add zoom effect on form container click
+    const formContainer = document.getElementById('form-container');
+    formContainer.addEventListener('click', function() {
+        formContainer.classList.add('clicked');
+        setTimeout(() => {
+            formContainer.classList.remove('clicked');
+        }, 3000); // Remove zoom effect after 3 seconds
+    });
+</script>
+
 </body>
 
 </html>

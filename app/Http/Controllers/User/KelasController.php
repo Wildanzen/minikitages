@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -24,8 +25,9 @@ class KelasController extends Controller
     public function create()
     {
         $guru = Guru::all();
+        $siswa = Siswa::all();
 
-        return view('admin.kelas.create', compact('guru'));
+        return view('kelas.create', compact('guru', 'siswa'));
     }
 
     /**
@@ -36,6 +38,7 @@ class KelasController extends Controller
         $validated = $request->validate([
             'nama_kelas' => 'required|string|unique:kelas',
             'guru_id' => 'required|exists:gurus,id',
+            'siswa_id' => 'required|exists:siswa,id',
         ]);
 
         Kelas::create($validated);
@@ -56,8 +59,9 @@ class KelasController extends Controller
     public function edit(Kelas $kelas)
     {
         $guru = Guru::all();
+        $siswa = Siswa::all();
 
-        return view('admin.kelas.edit', compact('kelas', 'guru'));
+        return view('kelas.edit', compact('kelas', 'guru', 'siswa'));
     }
 
     /**
@@ -68,7 +72,7 @@ class KelasController extends Controller
         $validated = $request->validate([
             'nama_kelas' => 'required|string|unique:kelas,nama_kelas,' . $kelas->id,
             'guru_id' => 'required|exists:gurus,id',
-            'siswa_id' => 'required|exists:siswa,id',
+            'siswa_id' => 'required|exists:siswas,id',
         ]);
 
         $kelas->update($validated);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\materi;
 use App\Models\Kelas;
@@ -41,7 +41,7 @@ class MateriController extends Controller
 
         Materi::create($validated);
 
-        return redirect()->route('materi.index')->with('success', 'Materi berhasil ditambahkan.');
+        return redirect()->route('admin.materi.index')->with('success', 'Materi berhasil ditambahkan.');
     }
 
     /**
@@ -75,7 +75,7 @@ class MateriController extends Controller
 
         $materi->update($validated);
 
-        return redirect()->route('materi.index')->with('success', 'Materi berhasil diperbarui.');
+        return redirect()->route('admin.materi.index')->with('success', 'Materi berhasil diperbarui.');
     }
 
     /**
@@ -85,6 +85,6 @@ class MateriController extends Controller
     {
         $materi->delete();
 
-        return redirect()->route('materi.index')->with('success', 'Materi berhasil dihapus.');
+        return redirect()->route('admin.materi.index')->with('success', 'Materi berhasil dihapus.');
     }
 }

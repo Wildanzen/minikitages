@@ -2,39 +2,47 @@
 
 @section('content')
     <div class="card">
-        <h5 class="card-header">Daftar Materi</h5>
+        <h5 class="card-header">Daftar Siswa</h5>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('materi.create') }}" class="btn btn-primary">Tambah Materi</a>
-                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Materi...">
+                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
             </div>
-            <table id="dataKelasTable" class="table table-striped table-hover">
+            <table id="dataGuruTable" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-start">No</th>
-                        <th>Judul Materi</th>
-                        <th>Nama Kelas</th>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Alamat</th>
+                        <th>Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($materi->isEmpty())
+                    @if ($siswa->isEmpty())
                         <tr>
-                            <td colspan="4" style="text-align: center; padding-right: 120px;">--Data  belum tersedia--</td>
+                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data siswa ini belum
+                                tersedia--</td>
                         </tr>
                     @else
-                        @foreach ($materi as $item)
+                        @foreach ($siswa as $siswas)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $item->judul_materi }}</td>
-                                <td>{{ $item->kelas->nama_kelas }}</td>
+                                <td>{{ $siswas->nama_siswa }}</td>
+                                <td>{{ $siswas->kelas }}</td>
+                                <td>{{ $siswas->alamat }}</td>
+                                <td>{{ ucfirst($siswas->status) }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.materi.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form action="{{ route('admin.materi.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                        <a href="{{ route('siswa.edit', $item->id) }}"
+                                            class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('siswa.destroy', $item->id) }}" method="POST"
+                                            style="display:inline;">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ?')">
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Anda yakin ?')">
                                                 Hapus
                                             </button>
                                         </form>
@@ -52,7 +60,7 @@
         <script>
             $(document).ready(function() {
                 // Inisialisasi DataTable
-                var table = $('#dataMateriTable').DataTable({
+                var table = $('#dataSiswaTable').DataTable({
                     responsive: true,
                     autoWidth: false,
                     language: {
@@ -65,7 +73,7 @@
                     }
                 });
 
-                // Custom Search di luar tabel
+                // Custom Search di Luar Tabel
                 $('#searchInput').on('keyup', function() {
                     table.search(this.value).draw();
                 });

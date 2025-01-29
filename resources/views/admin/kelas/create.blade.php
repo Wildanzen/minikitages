@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_modern')
 
 @section('content')
 <div class="container mt-5">
@@ -17,8 +17,8 @@
                     <label for="guru_id" class="form-label">Guru</label>
                     <select class="form-control" id="guru_id" name="guru_id" required>
                         <option value="">Pilih Guru</option>
-                        @foreach ($gurus as $guru)
-                            <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                        @foreach ($guru as $g)
+                            <option value="{{ $g->id }}">{{ $g->nama_guru }}</option>
                         @endforeach
                     </select>
                 </div>

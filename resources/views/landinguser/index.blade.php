@@ -44,7 +44,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./dashboard" aria-expanded="false">
                                 <span><i class="ti ti-layout-dashboard"></i></span>
-                                <span class="hide-menu">Dashboard</span>
+                                <span class="hide-menu">Dashboard User</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -64,25 +64,25 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/siswa" aria-expanded="false">
-                                <span><i class="ti ti-user"></i></span>
+                            <a class="sidebar-link" href="./siswa" aria-expanded="false">
+                                <span><i class="ti ti-users"></i></span>
                                 <span class="hide-menu">Siswa</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/tugas" aria-expanded="false">
+                            <a class="sidebar-link" href="./tugas" aria-expanded="false">
                                 <span><i class="ti ti-file-description"></i></span>
                                 <span class="hide-menu">Tugas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nilai" aria-expanded="false">
+                            <a class="sidebar-link" href="./nilai" aria-expanded="false">
                                 <span><i class="ti ti-check"></i></span>
                                 <span class="hide-menu">Nilai</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/materi" aria-expanded="false">
+                            <a class="sidebar-link" href="./materi" aria-expanded="false">
                                 <span><i class="ti ti-book"></i></span>
                                 <span class="hide-menu">Materi</span>
                             </a>

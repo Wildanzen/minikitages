@@ -1,37 +1,16 @@
 @extends('layouts.app_modern')
 
 @section('content')
-    <style>
-        body {
-            background-color: #e0e0e0; /* Latar belakang halaman */
-        }
-
-        #chart {
-            background-color: #ffffff; /* Latar belakang grafik */
-            padding: 20px; /* Padding untuk grafik */
-            border-radius: 40px; /* Sudut melengkung yang lebih tumpul */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek kedalaman */
-            width: 100%; /* Lebar default 100% */
-            max-width: 770px; /* Lebar maksimum */
-            margin-left: -20px;  /* Menambahkan margin kiri untuk menggeser ke kiri */
-            margin-top: -10x;
-        }
-
-        /* Optional: Adjust container spacing */
-        .container {
-            padding-top: 0; /* Menghapus padding atas */
-        }
-    </style>
 
     <div class="container py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-100 p-6 rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <!-- Title for the page -->
                     <h5 class="text-xl font-semibold mb-4">overview</h5>
-
+                     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
                     <!-- Chart Container -->
-                    <div id="chart"></div>
+                    <div id="chart" class="w-full"></div>
                 </div>
             </div>
         </div>
@@ -45,16 +24,15 @@
             chart: {
                 type: 'bar',
                 height: 400,
-                width: 750,
+                width: '100%', // Menjadikan chart lebar 100% dari kontainer
                 toolbar: {
                     show: false
                 },
-                // background: '#ffffff' // Mengubah latar belakang menjadi putih
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '20%', // Mengurangi lebar batang untuk membuatnya lebih ramping
+                    columnWidth: '25%', // Mengurangi lebar batang untuk membuatnya lebih ramping
                     endingShape: 'rounded'
                 },
             },
@@ -75,7 +53,7 @@
                 }
             },
             title: {
-                text: 'Monthly Data', // Mengaktifkan judul grafik
+                text: 'kontol',
                 align: 'center',
                 style: {
                     fontSize: '15px',
@@ -89,7 +67,20 @@
             tooltip: {
                 shared: true,
                 intersect: false
-            }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 350, // Menyesuaikan tinggi chart saat layar lebih kecil
+                    },
+                    title: {
+                        style: {
+                            fontSize: '12px', // Mengurangi ukuran font judul saat layar lebih kecil
+                        }
+                    }
+                }
+            }]
         }
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);

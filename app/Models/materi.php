@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class materi extends Model
 {
+    protected $table = 'materi';
     protected $guarded = ['id'];
 
     public function tugas()

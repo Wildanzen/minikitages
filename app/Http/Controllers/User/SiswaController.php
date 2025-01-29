@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\siswa;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
+        $siswas = Siswa::all();
         return view('admin.siswa.index', compact('siswa'));
     }
 
@@ -31,7 +31,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_siswa' => 'required|string|unique:siswa',
+            'nama_siswa' => 'required|string|unique:siswas',
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
@@ -39,7 +39,7 @@ class SiswaController extends Controller
 
         Siswa::create($validated);
 
-        return redirect()->route('siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
     }
 
     /**
@@ -65,7 +65,7 @@ class SiswaController extends Controller
     public function update(Request $request, siswa $siswa)
     {
         $validated = $request->validate([
-            'nama_siswa' => 'required|string|unique:siswa,nama_siswa,' . $siswa->id,
+            'nama_siswa' => 'required|string|unique:siswas,nama_siswa,' . $siswa->id,
             'kelas' => 'required|string',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
@@ -73,7 +73,7 @@ class SiswaController extends Controller
 
         $siswa->update($validated);
 
-        return redirect()->route('siswa.index')->with('success', 'Siswa berhasil diperbarui.');
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil diperbarui.');
     }
 
     /**
@@ -83,6 +83,6 @@ class SiswaController extends Controller
     {
         $siswa->delete();
 
-        return redirect()->route('siswa.index')->with('success', 'Siswa berhasil dihapus.');
+        return redirect()->route('admin.siswa.index')->with('success', 'Siswa berhasil dihapus.');
     }
 }

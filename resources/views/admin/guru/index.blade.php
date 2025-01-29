@@ -1,49 +1,80 @@
 @extends('layouts.app_modern')
 
 @section('content')
-<div class="container mx-auto py-6">
-    <h1 class="text-2xl font-semibold mb-4">Daftar Guru</h1>
-
-    <a href="{{ route('guru.create') }}"
-        class="bg-blue-500 text-black px-4 py-2 rounded-md mb-4 inline-block">Tambah Guru</a>
-
-    @if(session('success'))
-        <div class="bg-green-500 text-blue p-4 rounded-md mb-4">
-            {{ session('success') }}
+    <div class="card">
+        <h5 class="card-header">Daftar Guru</h5>
+        <div class="card-body">
+            <div class="mb-3 d-flex justify-content-between align-items-center">
+                <a href="{{ route('guru.create') }}" class="btn btn-primary">Tambah Data</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Guru...">
+            </div>
+            <table id="dataGuruTable" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Guru</th>
+                        <th>Status</th>
+                        <th>Umur</th>
+                        <th>Alamat</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($guru->isEmpty())
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data guru ini belum tersedia--</td>
+                        </tr>
+                    @else
+                        @foreach ($guru as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama_guru }}</td>
+                                <td>{{ $item->status }}</td>
+                                <td>{{ $item->umur }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('guru.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('guru.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Anda yakin ?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
         </div>
-    @endif
+    </div>
 
-    <table class="min-w-full bg-white shadow-md rounded-md overflow-hidden">
-        <thead>
-            <tr>
-                <th class="py-2 px-4 border-b text-left">ID</th>
-                <th class="py-2 px-4 border-b text-left">Nama Guru</th>
-                <th class="py-2 px-4 border-b text-left">Status</th>
-                <th class="py-2 px-4 border-b text-left">Umur</th>
-                <th class="py-2 px-4 border-b text-left">Alamat</th>
-                <th class="py-2 px-4 border-b text-left">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($guru as $item)
-                <tr>
-                    <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
-                    <td class="py-2 px-4 border-b">{{ $item->nama_guru }}</td>
-                    <td class="py-2 px-4 border-b">{{ $item->status }}</td>
-                    <td class="py-2 px-4 border-b">{{ $item->umur }}</td>
-                    <td class="py-2 px-4 border-b">{{ $item->alamat }}</td>
-                    <td class="py-2 px-4 border-b">
-                        <a href="{{ route('guru.edit', $item->id) }}" class="text-yellow-500">Edit</a>
-                        <form action="{{ route('guru.destroy', $item->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500"
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Inisialisasi DataTable
+                var table = $('#dataGuruTable').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data per halaman",
+                        zeroRecords: "Tidak ada data ditemukan",
+                        info: "Menampilkan _PAGE_ dari _PAGES_ halaman",
+                        infoEmpty: "Tidak ada data tersedia",
+                        infoFiltered: "(difilter dari _MAX_ total data)"
+                    }
+                });
+
+                // Custom Search di Luar Tabel
+                $('#searchInput').on('keyup', function() {
+                    table.search(this.value).draw();
+                });
+            });
+        </script>
+    @endpush
 @endsection

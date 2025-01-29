@@ -1,0 +1,40 @@
+@extends('layouts.app_modern')
+
+@section('content')
+<div class="container mt-4">
+    <h1>Daftar Nilai</h1>
+    <a href="{{ route('nilai.create') }}" class="btn btn-primary mb-3">Tambah Nilai</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Guru</th>
+                <th>Siswa</th>
+                <th>Tugas</th>
+                <th>Nilai</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($nilai as $n)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $n->guru->nama }}</td>
+                <td>{{ $n->siswa->nama_siswa }}</td>
+                <td>{{ $n->tugas->judul }}</td>
+                <td>{{ $n->nilai }}</td>
+                <td>
+                    <a href="{{ route('nilai.edit', $n->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('nilai.destroy', $n->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

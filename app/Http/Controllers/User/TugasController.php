@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\Tugas;
 use App\Models\Materi;
@@ -43,7 +43,7 @@ class TugasController extends Controller
 
         Tugas::create($validated);
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil ditambahkan.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil ditambahkan.');
     }
 
     /**
@@ -78,7 +78,7 @@ class TugasController extends Controller
 
         $tugas->update($validated);
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil diperbarui.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil diperbarui.');
     }
 
     /**
@@ -88,6 +88,6 @@ class TugasController extends Controller
     {
         $tugas->delete();
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil dihapus.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil dihapus.');
     }
 }

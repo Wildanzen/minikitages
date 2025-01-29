@@ -1,0 +1,31 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #8ccaf0, #ffffff); /* Light yellow to light brown gradient */
+    background-size: cover; /* Ensures the gradient covers the entire background */
+    background-position: center; /* Centers the gradient */
+    background-repeat: no-repeat; /* Prevents the gradient from repeating */
+}
+
+.online {
+    color: #51c7ee; /* Light blue */
+}
+
+.text-online {
+    color: #0505ac; /* Light blue for "Online" text */
+}
+
+.class {
+    color: #00eeff; /* Light blue */
+}
+
+.text-class {
+    color: #08dce3; /* Light blue for "Online" text */
+}
+
+.form-container {
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.form-container.clicked {
+    transform: scale(1.05); /* Zoom in */
+}
