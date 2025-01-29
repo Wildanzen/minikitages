@@ -24,11 +24,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (Auth::attempt($credentials)) {
+            // Redirect setelah login berhasil
+            return redirect()->intended('dashboard');
+        } else {
+            // Kirim kembali error jika login gagal
+            return back()->withErrors(['email' => 'Email atau password salah.']);
+        }
     }
 
     /**
