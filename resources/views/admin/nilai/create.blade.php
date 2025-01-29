@@ -34,6 +34,7 @@
             <input type="number" name="nilai" id="nilai" class="form-control" min="0" max="100">
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('nilai.index') }}" class="btn btn-warning ms-3">Kembali</a>
     </form>
 </div>
 @endsection

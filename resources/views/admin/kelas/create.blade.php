@@ -55,6 +55,7 @@
                         <!-- Tombol Simpan di Kanan Bawah -->
                         <div class="mt-4">
                             <button type="submit" class="btn btn-success">SIMPAN</button>
+                            <a href="{{ route('kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
                         </div>
                     </form>
                 </div>

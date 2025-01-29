@@ -25,6 +25,39 @@
             font-weight: bold;
 
         }
+
+        /* Menyesuaikan badge active dengan desain yang lebih elegan */
+        .badge-active {
+            background-color: #3ef569;
+            /* Hijau */
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-transform: capitalize;
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+            transition: all 0.3s ease;
+        }
+
+        /* Menyesuaikan badge inactive dengan desain yang lebih elegan */
+        .badge-inactive {
+            background-color: #ff0000;
+            /* Merah */
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-transform: capitalize;
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+            transition: all 0.3s ease;
+        }
+
+        /* Menambahkan efek hover untuk interaksi */
+        .badge-active:hover,
+        .badge-inactive:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
     </style>
 
     <div class="card">
@@ -39,9 +72,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Guru</th>
-                        <th>Status</th>
-                        <th>Umur</th>
                         <th>Alamat</th>
+                        <th>Umur</th>
+                        <th class="status-column">Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -56,9 +89,15 @@
                             <tr>
                                 <td class="text-start">{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_guru }}</td>
-                                <td>{{ $item->status }}</td>
-                                <td>{{ $item->umur }}</td>
                                 <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->umur }}</td>
+                                <td>
+                                    <span
+                                        class="status-column {{ strtolower(trim($item->status)) === 'aktif' ? 'badge-active' : 'badge-inactive' }}">
+                                        {{ $item->status }}
+                                    </span>
+                                </td>
+
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('guru.edit', $item->id) }}"

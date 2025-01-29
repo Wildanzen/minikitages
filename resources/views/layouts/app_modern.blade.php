@@ -15,24 +15,29 @@
 
 <body>
     <style>
-    /* CSS untuk background GIF animasi */
-    body {
-        background: url('{{ asset('gambar/kapalterbang.gif') }}') no-repeat center center fixed;
-        background-size: 30% auto; /* Memperkecil ukuran background */
-        background-position: right 20% bottom; /* Arahkan ke kanan dan turunkan ke bawah */
-        animation: backgroundAnimation 5s infinite; /* Optional: atur durasi animasi */
-    }
-
-    @keyframes backgroundAnimation {
-        0% {
-            background-position: right 30% bottom; /* Mulai dari kanan dan bawah */
+        /* CSS untuk background GIF animasi */
+        body {
+            background: url('{{ asset('gambar/kapalterbang.gif') }}') no-repeat center center fixed;
+            background-size: 30% auto;
+            /* Memperkecil ukuran background */
+            background-position: right 20% bottom;
+            /* Arahkan ke kanan dan turunkan ke bawah */
+            animation: backgroundAnimation 10s infinite;
+            /* Optional: atur durasi animasi */
         }
-        100% {
-            background-position: right 20% bottom; /* Tetap di kanan dan bawah */
-        }
-    }
 
-</style>
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: right 60% bottom;
+                /* Mulai dari kanan dan bawah */
+            }
+
+            100% {
+                background-position: right 25% bottom;
+                /* Tetap di kanan dan bawah */
+            }
+        }
+    </style>
 
     <!-- Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -68,7 +73,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">UI COMPONENTS</span>
+                            <span class="hide-menu">Fitur</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/guru" aria-expanded="false">
@@ -105,22 +110,14 @@
                                 <span><i class="ti ti-book"></i></span>
                                 <span class="hide-menu">Materi</span>
                             </a>
-                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">EXTRA</span>
+                            <span class="hide-menu">Hello</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                                <span><i class="ti ti-mood-happy"></i></span>
-                                <span class="hide-menu">Icons</span>
-                            </a>
+                        <li class="sidebar-item text-center">
+                            <img src="{{ asset('gambar/download.jpeg') }}" alt="Materi" class="img-fluid mt-2"
+                                width="150">
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                                <span><i class="ti ti-aperture"></i></span>
-                                <span class="hide-menu">Sample Page</span>
-                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -151,7 +148,7 @@
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                             <!-- Nama User -->
                             <li class="nav-item">
-                                <span class="btn btn-primary text-white">
+                                <span class="btn btn-primary text-white" style="font-size: 0.8rem; padding: 4px 8px;">
                                     {{ Auth::user()->name }}
                                 </span>
                             </li>
@@ -159,7 +156,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('modern/src/assets/images/profile/user-1.jpg') }}"
+                                    <img src="{{ asset('modern/src/assets/images/profile/user3.png') }}"
                                         alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"

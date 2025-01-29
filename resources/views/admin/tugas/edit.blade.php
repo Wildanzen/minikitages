@@ -39,6 +39,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="{{ route('tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
             </form>
         </div>
     </div>

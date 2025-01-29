@@ -37,6 +37,7 @@
                 value="{{ $nilai->nilai }}">
         </div>
         <button type="submit" class="btn btn-success">Perbarui</button>
+         <a href="{{ route('nilai.index') }}" class="btn btn-warning ms-3">Kembali</a>
     </form>
 </div>
 @endsection

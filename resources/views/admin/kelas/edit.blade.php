@@ -23,6 +23,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Perbarui</button>
+                 <a href="{{ route('kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
             </form>
         </div>
     </div>

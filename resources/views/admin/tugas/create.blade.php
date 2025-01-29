@@ -54,6 +54,7 @@
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success text-white">SIMPAN</button>
+                    <a href="{{ route('tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
         </div>

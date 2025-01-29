@@ -45,7 +45,8 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">Perbarui</button>
+        <button type="submit" class="btn btn-success mt-4">Perbarui</button>
+        <a href="{{ route('siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
     </form>
 </div>
 @endsection

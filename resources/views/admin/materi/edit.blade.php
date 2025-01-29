@@ -32,6 +32,7 @@
                         </select>
                     </div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Simpan</button>
+                     <a href="{{ route('materi.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </form>
             </div>
         </div>

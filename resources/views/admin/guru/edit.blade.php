@@ -64,7 +64,8 @@
                 </div>
 
                 <div class="text-ml mt-4">
-                    <button type="submit" class="btn btn-warning">SIMPAN</button>
+                    <button type="submit" class="btn btn-success">SIMPAN</button>
+                    <a href="{{ route('guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
         </div>
