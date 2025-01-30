@@ -121,38 +121,47 @@
         </p>
     </div>
 
+    <!-- Tambahkan SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-    // Toggle password visibility
-    document.getElementById('togglePassword').addEventListener('click', function(e) {
-        const passwordField = document.getElementById('password');
-        const eyeClosed = document.getElementById('eyeClosed');
-        const eyeOpen = document.getElementById('eyeOpen');
-        const type = passwordField.type === 'password' ? 'text' : 'password';
-        passwordField.type = type;
-        eyeClosed.classList.toggle('hidden');
-        eyeOpen.classList.toggle('hidden');
-    });
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Mencegah submit langsung
 
-    // Toggle confirm password visibility
-    document.getElementById('toggleConfirmPassword').addEventListener('click', function(e) {
-        const confirmPasswordField = document.getElementById('password_confirmation');
-        const eyeClosedConfirm = document.getElementById('eyeClosedConfirm');
-        const eyeOpenConfirm = document.getElementById('eyeOpenConfirm');
-        const type = confirmPasswordField.type === 'password' ? 'text' : 'password';
-        confirmPasswordField.type = type;
-        eyeClosedConfirm.classList.toggle('hidden');
-        eyeOpenConfirm.classList.toggle('hidden');
-    });
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("password_confirmation").value.trim();
 
-    // Add zoom effect on form container click
-    const formContainer = document.getElementById('form-container');
-    formContainer.addEventListener('click', function() {
-        formContainer.classList.add('clicked');
-        setTimeout(() => {
-            formContainer.classList.remove('clicked');
-        }, 3000); // Remove zoom effect after 3 seconds
-    });
-</script>
+            if (!name || !email || !password || !confirmPassword) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Harap isi semua kolom!",
+                });
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Password dan konfirmasi password tidak cocok!",
+                });
+                return;
+            }
+
+            Swal.fire({
+                icon: "success",
+                title: "Pendaftaran berhasil!",
+                text: "Akun Anda telah dibuat.",
+                confirmButtonText: "OK"
+            }).then(() => {
+                event.target.submit(); // Submit form setelah SweetAlert ditutup
+            });
+        });
+    </script>
+
 </body>
 
 </html>

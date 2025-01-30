@@ -23,7 +23,8 @@
         font-weight: bold;
     }
 </style>
-
+    
+    </style>
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah guru</h5>
         <div class="card-body">

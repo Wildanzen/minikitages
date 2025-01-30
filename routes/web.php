@@ -37,7 +37,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Resource routes untuk admin
     Route::resources([
+
         'guru'  => GuruController::class,
+
+        'guru' => GuruController::class,
+        'dashboard' => DashboardController::class,
+
         'kelas' => KelasController::class,
         'materi' => MateriController::class,
         'nilai' => NilaiController::class,
