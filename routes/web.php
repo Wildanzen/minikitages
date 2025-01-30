@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -9,7 +10,9 @@ use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
+use App\Http\Controllers\User\UserTugasController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\UserMateriController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -47,4 +50,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::resource('/nilai', NilaiController::class);
         Route::resource('/siswa', SiswaController::class);
         Route::resource('/tugas', TugasController::class);
+});
+
+Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard');
+
+    // Rute untuk Materi
+    Route::get('/materi', [UserMateriController::class, 'index'])->name('materi.index');
+    Route::get('/materi/{id}', [UserMateriController::class, 'show'])->name('materi.show');
+
+    // Rute untuk Tugas
+    Route::get('/tugas', [UserTugasController::class, 'index'])->name('tugas.index');
+    Route::get('/tugas/{id}', [UserTugasController::class, 'show'])->name('tugas.show');
+    Route::post('/tugas/{id}/submit', [UserTugasController::class, 'submit'])->name('tugas.submit');
 });

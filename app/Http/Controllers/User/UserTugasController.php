@@ -8,7 +8,7 @@ use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TugasController extends Controller
+class UserTugasController extends Controller
 {
     /**
      * Display a listing of the resource.
