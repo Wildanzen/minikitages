@@ -1,0 +1,38 @@
+
+        .bg-grey {
+            background-color: #ffffff;
+            color: white;
+        }
+
+        .card, .card-header, .card-body, th, td, .form-control, .btn {
+            font-weight: bold;
+        }
+
+        #searchInput {
+            font-weight: bold;
+        }
+
+        .badge-active {
+            background-color: #3ef569;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-transform: capitalize;
+            transition: all 0.3s ease;
+        }
+
+        .badge-inactive {
+            background-color: #ff0000;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-transform: capitalize;
+            transition: all 0.3s ease;
+        }
+
+        .badge-active:hover, .badge-inactive:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }

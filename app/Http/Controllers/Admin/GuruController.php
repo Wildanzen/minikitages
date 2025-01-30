@@ -42,7 +42,7 @@ class GuruController extends Controller
             return redirect()->route('guru.index')->with('success', 'Guru berhasil ditambahkan!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan! Guru gagal ditambahkan.');
-        } 
+        }
     }
 
     /**
@@ -59,8 +59,7 @@ class GuruController extends Controller
     public function edit(Guru $guru)
     {
 
-        return view('admin.guru.edit',compact('guru'));
-
+        return view('admin.guru.edit', compact('guru'))->with('success', 'Silakan edit data guru.');
     }
 
     /**

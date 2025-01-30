@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\materi;
+use App\Models\Guru;
+use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\materi;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -23,10 +25,13 @@ class MateriController extends Controller
      */
     public function create()
     {
-        $kelas = Kelas::all();
+        $guru = Guru::all(); // Ambil data guru dari database
+        $kelas = Kelas::all(); // Ambil data kelas dari database
+        $siswa = Siswa::all(); // Ambil data siswa dari database
 
         return view('admin.materi.create', compact('guru', 'kelas', 'siswa'));
     }
+
 
     /**
      * Store a newly created resource in storage.

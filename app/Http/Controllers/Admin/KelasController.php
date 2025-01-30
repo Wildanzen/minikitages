@@ -57,7 +57,7 @@ class KelasController extends Controller
     {
         $guru = Guru::all();
 
-        return view('admin.kelas.edit', compact('kelas', 'guru'));
+        return view('admin.kelas.edit', compact('kelas', ));
     }
 
     /**

@@ -59,6 +59,9 @@
                                 <td>{{ $item->kelas->nama_kelas }}</td> <!-- Relasi ke tabel kelas -->
                                 <td>
                                 <td class="text-center">
+                                     <div class="d-flex justify-content-center">
+                                        <a href="{{ route('tugas.show', $item->id) }}"
+                                            class="btn btn-secondary btn-sm me-2">Lihat</a>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('tugas.edit', $item->id) }}"
                                             class="btn btn-warning btn-sm me-2">Edit</a>
