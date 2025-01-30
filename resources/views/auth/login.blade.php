@@ -7,6 +7,8 @@
     <title>Login</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahkan SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 h-screen flex items-center justify-center">
@@ -23,8 +25,7 @@
             <!-- Email -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus
-                    autocomplete="username"
+                <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="username"
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
                 @error('email')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -91,7 +92,7 @@
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
                 eyeIcon.innerHTML =
-                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.269-2.943-9.542-7a10.05 10.05 0 012.967-4.763m12.045 0A10.05 10.05 0 0119.542 12c-1.273 4.057-5.064 7-9.542 7-1.076 0-2.137-.156-3.166-.456m10.833-11.57A9.97 9.97 0 0112 5c-4.477 0-8.268 2.943-9.542 7a9.97 9.97 0 002.968 4.763m12.045 0L3.343 3.343" />';
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.269-2.943-9.542-7a10.05 10.05 0 012.967-4.763m12.045 0A10.05 10.05 0 0119.542 12c-1.273 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7-1.076 0-2.137-.156-3.166-.456m10.833-11.57A9.97 9.97 0 0112 5c-4.477 0-8.268 2.943-9.542 7a9.97 9.97 0 002.968 4.763m12.045 0L3.343 3.343" />';
             } else {
                 passwordField.type = 'password';
                 eyeIcon.innerHTML =
@@ -101,12 +102,29 @@
 
         // Zoom effect on form click
         const formContainer = document.getElementById('form-container');
-        formContainer.addEventListener('click', function() {
+        formContainer.addEventListener('click', function () {
             formContainer.classList.add('clicked');
             setTimeout(() => {
                 formContainer.classList.remove('clicked');
             }, 1000); // Remove zoom effect after 0.3 seconds
         });
+
+        // Cek jika login gagal atau berhasil
+        @if(session('status'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Berhasil',
+                text: 'Selamat datang di kelas online!',
+                confirmButtonText: 'Ok'
+            });
+        @elseif($errors->any())
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Login',
+                text: 'Periksa email dan password Anda!',
+                confirmButtonText: 'Coba Lagi'
+            });
+        @endif
     </script>
 </body>
 

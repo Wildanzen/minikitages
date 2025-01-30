@@ -24,23 +24,9 @@
     }
 </style>
 
-<<<<<<< HEAD
-<div class="card">
-    <h5 class="card-header bg-grey text-black">Tambah Guru</h5>
-    <div class="card-body">
-        <form action="{{ route('guru.store') }}" method="POST">
-            @csrf
-            <!-- Nama Guru -->
-            <div class="form-group mb-3">
-                <label for="nama_guru" class="d-block">Nama Guru</label>
-                <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama_guru"
-                    name="nama_guru" value="{{ old('nama_guru') }}">
-                <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
-            </div>
-=======
         }
     </style>
-    
+
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah guru</h5>
         <div class="card-body">
@@ -53,7 +39,6 @@
                         name="nama_guru" value="{{ old('nama_guru') }}">
                     <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                 </div>
->>>>>>> d65e8f49395e5738b348aaf394b15a75315394d5
 
             <!-- Status -->
             <div class="form-group mb-3">
