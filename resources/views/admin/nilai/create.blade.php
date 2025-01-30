@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Tambah Nilai</h1>
-    <form action="{{ route('nilai.store') }}" method="POST">
+    <form action="{{ route('admin.nilai.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="guru_id">Guru</label>
@@ -34,7 +34,7 @@
             <input type="number" name="nilai" id="nilai" class="form-control" min="0" max="100">
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
-        <a href="{{ route('nilai.index') }}" class="btn btn-warning ms-3">Kembali</a>
+        <a href="{{ route('admin.nilai.index') }}" class="btn btn-warning ms-3">Kembali</a>
     </form>
 </div>
 @endsection

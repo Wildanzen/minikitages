@@ -28,11 +28,11 @@
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah Kelas</h5>
         <div class="card-body">
-            <form action="{{ route('kelas.store') }}" method="POST">
+            <form action="{{ route('admin.kelas.store') }}" method="POST">
                 @csrf
                 <!-- Nama Guru -->
                 <div class="card-body">
-                    <form action="{{ route('kelas.store') }}" method="POST">
+                    <form action="{{ route('admin.kelas.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas" class="form-label">Nama Kelas</label>
@@ -55,7 +55,7 @@
                         <!-- Tombol Simpan di Kanan Bawah -->
                         <div class="mt-4">
                             <button type="submit" class="btn btn-success">SIMPAN</button>
-                            <a href="{{ route('kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                            <a href="{{ route('admin.kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
                         </div>
                     </form>
                 </div>

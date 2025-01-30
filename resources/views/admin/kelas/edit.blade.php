@@ -7,7 +7,7 @@
             <h3>Edit Kelas</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('kelas.update', $kelas->id) }}" method="POST">
+            <form action="{{ route('admin.kelas.update', $kelas->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Perbarui</button>
-                 <a href="{{ route('kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                 <a href="{{ route('admin.kelas.index') }}" class="btn btn-warning ms-3">Kembali</a>
             </form>
         </div>
     </div>

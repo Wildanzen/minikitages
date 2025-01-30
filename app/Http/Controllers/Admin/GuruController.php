@@ -39,7 +39,7 @@ class GuruController extends Controller
         ]);
         Guru::create($request->all());
 
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil ditambahkan!');
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil ditambahkan!');
     }
 
     /**
@@ -73,7 +73,7 @@ class GuruController extends Controller
 
         $guru->update($validated);
 
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil di edit.');
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil di edit.');
     }
 
     /**
@@ -82,6 +82,6 @@ class GuruController extends Controller
     public function destroy(Guru $guru)
     {
         $guru->delete();
-        return redirect()->route('guru.index')->with('success', 'Guru berhasil di hapus.');
+        return redirect()->route('admin.guru.index')->with('success', 'Guru berhasil di hapus.');
     }
 }

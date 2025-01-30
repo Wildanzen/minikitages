@@ -7,7 +7,7 @@ use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class MateriController extends Controller
+class UserMateriController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,4 +1,5 @@
 @extends('layouts.app_modern')
+
 @section('content')
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,8 +22,12 @@
         <h6 class="card-header">Daftar Kelas</h6>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
+<<<<<<< HEAD
                 <link rel="stylesheet" href="{{ asset('css/guru.css') }}">
                 <a href="{{ route('kelas.create') }}" class="btn btn-primary">Tambah Data</a>
+=======
+                <a href="{{ route('admin.kelas.create') }}" class="btn btn-primary">Tambah Data</a>
+>>>>>>> 6a1564da533044259de139729b916cdae3c7812f
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Kelas...">
             </div>
             <table id="dataKelasTable" class="table table-striped table-hover">

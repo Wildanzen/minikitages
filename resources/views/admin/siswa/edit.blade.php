@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Edit Siswa</h1>
 
-    <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
+    <form action="{{ route('admin.siswa.update', $siswa->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -46,7 +46,7 @@
         </div>
 
         <button type="submit" class="btn btn-success mt-4">Perbarui</button>
-        <a href="{{ route('siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
+        <a href="{{ route('admin.siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
     </form>
 </div>
 @endsection

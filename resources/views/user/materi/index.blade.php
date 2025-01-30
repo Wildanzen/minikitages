@@ -1,52 +1,65 @@
 @extends('layouts.app_modern')
+
 @section('content')
+<style>
+        .bg-grey {
+            background-color: #ffffff;
+            /* Warna ungu */
+            color: white;
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
     <div class="card">
-      <h6 class="card-header">Daftar Siswa</h6>
+        <h4 class="card-header bg-grey text-black">Daftar Materi</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
-                <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
-                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
-=======
-                <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary">Tambah Data</a>
->>>>>>> 6a1564da533044259de139729b916cdae3c7812f
-                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
+                <a href="{{ route('admin.materi.create') }}" class="btn btn-primary">Tambah Materi</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Materi...">
             </div>
-            <table id="dataGuruTable" class="table table-striped table-hover">
+            <table id="dataKelasTable" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama Siswa</th>
-                        <th>Kelas</th>
-                        <th>Alamat</th>
-                        <th>Status</th>
+                        <th class="text-start">No</th>
+                        <th>Judul Materi</th>
+                        <th>Nama Kelas</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($siswa->isEmpty())
+                    @if ($materi->isEmpty())
                         <tr>
-                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data siswa ini belum
-                                tersedia--</td>
+                            <td colspan="4" style="text-align: center; padding-right: 120px;">--Data  belum tersedia--</td>
                         </tr>
                     @else
-                        @foreach ($siswa as $siswas)
+                        @foreach ($materi as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $siswas->nama_siswa }}</td>
-                                <td>{{ $siswas->kelas }}</td>
-                                <td>{{ $siswas->alamat }}</td>
-                                <td>{{ ucfirst($siswas->status) }}</td>
+                                <td>{{ $item->judul_materi }}</td>
+                                <td>{{ $item->kelas->nama_kelas }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.siswa.edit', $item->id) }}"
-                                            class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form action="{{ route('admin.siswa.destroy', $item->id) }}" method="POST"
-                                            style="display:inline;">
+                                        <a href="{{ route('admin.materi.edit', $item->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                        <form action="{{ route('admin.materi.destroy', $item->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Anda yakin ?')">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ?')">
                                                 Hapus
                                             </button>
                                         </form>
@@ -64,7 +77,7 @@
         <script>
             $(document).ready(function() {
                 // Inisialisasi DataTable
-                var table = $('#dataSiswaTable').DataTable({
+                var table = $('#dataMateriTable').DataTable({
                     responsive: true,
                     autoWidth: false,
                     language: {
@@ -77,7 +90,7 @@
                     }
                 });
 
-                // Custom Search di Luar Tabel
+                // Custom Search di luar tabel
                 $('#searchInput').on('keyup', function() {
                     table.search(this.value).draw();
                 });

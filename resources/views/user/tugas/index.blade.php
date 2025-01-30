@@ -1,47 +1,71 @@
 @extends('layouts.app_modern')
 @section('content')
+<style>
+        .bg-grey {
+            background-color: #ffffff;
+            /* Warna ungu */
+            color: white;
+            /* Warna teks putih */
+        }
+
+        /* Menebalkan seluruh teks dalam card */
+        .card,
+        .card-header,
+        .card-body,
+        th,
+        td,
+        .form-control,
+        .btn {
+            font-weight: bold;
+        }
+
+        /* Menebalkan teks pada input search */
+        #searchInput {
+            font-weight: bold;
+
+        }
+    </style>
     <div class="card">
-      <h6 class="card-header">Daftar Siswa</h6>
+       <h4 class="card-header bg-grey text-black">Daftar Tugas</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
-                <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
-                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
-=======
-                <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary">Tambah Data</a>
->>>>>>> 6a1564da533044259de139729b916cdae3c7812f
-                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
+                <a href="{{ route('admin.tugas.create') }}" class="btn btn-primary">Tambah Data</a>
+                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Tugas...">
             </div>
             <table id="dataGuruTable" class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Siswa</th>
+                        <th>Judul Tugas</th>
+                        <th>Deskripsi</th>
+                        <th>Deadline</th>
                         <th>Kelas</th>
-                        <th>Alamat</th>
-                        <th>Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($siswa->isEmpty())
+                    @if ($tugas->isEmpty())
                         <tr>
-                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data siswa ini belum
+                            <td colspan="6" style="text-align: center; padding-right: 120px;">--Data tugas ini belum
                                 tersedia--</td>
                         </tr>
                     @else
-                        @foreach ($siswa as $siswas)
+                        @foreach ($tugas as $item)
                             <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $siswas->nama_siswa }}</td>
-                                <td>{{ $siswas->kelas }}</td>
-                                <td>{{ $siswas->alamat }}</td>
-                                <td>{{ ucfirst($siswas->status) }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->judul_tugas }}</td>
+                                <td>{{ $item->deskripsi ?? 'Tidak ada deskripsi' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal_deadline)->format('d M Y') }}</td>
+                                <td>{{ $item->kelas->nama_kelas }}</td> <!-- Relasi ke tabel kelas -->
+                                <td>
                                 <td class="text-center">
+                                     <div class="d-flex justify-content-center">
+                                        <a href="{{ route('admin.tugas.show', $item->id) }}"
+                                            class="btn btn-secondary btn-sm me-2">Lihat</a>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.siswa.edit', $item->id) }}"
+                                        <a href="{{ route('admin.tugas.edit', $item->id) }}"
                                             class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form action="{{ route('admin.siswa.destroy', $item->id) }}" method="POST"
+                                        <form action="{{ route('admin.tugas.destroy', $item->id) }}" method="POST"
                                             style="display:inline;">
                                             @csrf
                                             @method('delete')
@@ -64,7 +88,7 @@
         <script>
             $(document).ready(function() {
                 // Inisialisasi DataTable
-                var table = $('#dataSiswaTable').DataTable({
+                var table = $('#dataTugasTable').DataTable({
                     responsive: true,
                     autoWidth: false,
                     language: {
