@@ -1,48 +1,57 @@
 <?php
 
-use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ErrorController;
-use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TugasController;
 use App\Http\Controllers\Admin\MateriController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\UserDashboardController;
 
 // Landing page
 Route::get('/', function () {
     return view('landing.index');
-});
+})->name('landing.index');
 
-
+// Logout
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('landing.index');
 })->name('logout');
 
-
-// Profile routes
-Route::middleware('auth')->group(function () {
+// User Routes (Hanya bisa diakses setelah login)
+Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Admin routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard'); // Pastikan ini adalah view dashboard admin
-    })->name('dashboard');
-    Route::resource('guru', GuruController::class);
-    Route::resource('kelas', KelasController::class);
-    Route::resource('materi', MateriController::class);
-    Route::resource('nilai', NilaiController::class);
-    Route::resource('siswa', SiswaController::class);
-    Route::resource('tugas', TugasController::class);
-    Route::resource('error', ErrorController::class);
+// Admin Routes (Hanya bisa diakses oleh admin)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Resource routes untuk admin
+    Route::resources([
+        'guru' => GuruController::class,
+        'kelas' => KelasController::class,
+        'materi' => MateriController::class,
+        'nilai' => NilaiController::class,
+        'siswa' => SiswaController::class,
+        'tugas' => TugasController::class,
+        'error' => ErrorController::class,
+    ]);
+});
+
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
 });
 
 // Authentication routes

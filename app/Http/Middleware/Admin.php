@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Admin
 {
-
+    
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->role !== 'admin') {
-            return redirect('/');
+            return redirect('admin.dashboard');
         }
 
         return $next($request);
