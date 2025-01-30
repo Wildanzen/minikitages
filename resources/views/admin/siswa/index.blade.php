@@ -29,7 +29,7 @@
       <h4 class="card-header bg-grey text-black">Daftar Siswa</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary">Tambah Data</a>
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
             </div>
             <table id="dataGuruTable" class="table table-striped table-hover">
@@ -59,9 +59,9 @@
                                 <td>{{ ucfirst($siswas->status) }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('siswa.edit', $item->id) }}"
+                                        <a href="{{ route('admin.siswa.edit', $item->id) }}"
                                             class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form action="{{ route('siswa.destroy', $item->id) }}" method="POST"
+                                        <form action="{{ route('admin.siswa.destroy', $item->id) }}" method="POST"
                                             style="display:inline;">
                                             @csrf
                                             @method('delete')

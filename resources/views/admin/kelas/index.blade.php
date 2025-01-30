@@ -1,4 +1,5 @@
 @extends('layouts.app_modern')
+
 @section('content')
     <style>
         .bg-grey {
@@ -46,7 +47,7 @@
         <h4 class="card-header bg-grey text-black">Daftar Kelas</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('kelas.create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('admin.kelas.create') }}" class="btn btn-primary">Tambah Data</a>
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Kelas...">
             </div>
             <table id="dataKelasTable" class="table table-striped table-hover">

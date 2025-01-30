@@ -29,7 +29,7 @@
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah siswa</h5>
         <div class="card-body">
-            <form action="{{ route('tugas.store') }}" method="POST">
+            <form action="{{ route('admin.tugas.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="judul_tugas" class="form-label">Judul Tugas</label>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success text-white">SIMPAN</button>
-                    <a href="{{ route('tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                    <a href="{{ route('admin.tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
         </div>

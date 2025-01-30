@@ -209,7 +209,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('guru.store') }}" method="POST">
+                    <form action="{{ route('admin.guru.store') }}" method="POST">
                         @csrf
                         <!-- Nama Guru -->
                         <div class="form-group mb-3">

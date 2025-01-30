@@ -10,7 +10,7 @@
             <h5>Nama Kelas: {{ $kelas->nama_kelas }}</h5>
             <h5>Guru: {{ $kelas->guru->nama }}</h5>
 
-            <a href="{{ route('kelas.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+            <a href="{{ route('admin.kelas.index') }}" class="btn btn-secondary mt-3">Kembali</a>
         </div>
     </div>
 </div>

@@ -30,7 +30,7 @@
         <h4 class="card-header bg-grey text-black">Daftar Materi</h4>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('materi.create') }}" class="btn btn-primary">Tambah Materi</a>
+                <a href="{{ route('admin.materi.create') }}" class="btn btn-primary">Tambah Materi</a>
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Materi...">
             </div>
             <table id="dataKelasTable" class="table table-striped table-hover">

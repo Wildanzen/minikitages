@@ -76,37 +76,37 @@
                             <span class="hide-menu">Fitur</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/guru" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.guru.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-user"></i></span>
                                 <span class="hide-menu">Guru</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/kelas" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.kelas.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-home"></i></span>
                                 <span class="hide-menu">Kelas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/siswa" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.siswa.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-user"></i></span>
                                 <span class="hide-menu">Siswa</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/tugas" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.tugas.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-file-description"></i></span>
                                 <span class="hide-menu">Tugas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nilai" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.nilai.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-check"></i></span>
                                 <span class="hide-menu">Nilai</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/materi" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admin.materi.index') }}" aria-expanded="false">
                                 <span><i class="ti ti-book"></i></span>
                                 <span class="hide-menu">Materi</span>
                             </a>

@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app_modern')
+@extends('layouts.app_modern')
 
 @section('content')
     <style>
@@ -28,7 +28,7 @@
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah guru</h5>
         <div class="card-body">
-            <form action="{{ route('guru.store') }}" method="POST">
+            <form action="{{ route('admin.guru.store') }}" method="POST">
                 @csrf
                 <!-- Nama Guru -->
                 <div class="form-group mb-3">
@@ -37,10 +37,6 @@
                         name="nama_guru" value="{{ old('nama_guru') }}">
                     <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9ef0fd1d6a0c27d5197aed00c0be511cd06da0cd
 
                 <!-- Status -->
                 <div class="form-group mb-3">
@@ -66,12 +62,10 @@
                         name="alamat" value="{{ old('alamat') }}">
                     <span class="text-danger">{{ $errors->first('alamat') }}</span>
                 </div>
-
-<<<<<<< HEAD
                 <!-- Tombol Aksi -->
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success">SIMPAN</button>
-                    <a href="{{ route('guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                    <a href="{{ route('admin.guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
             </form>
@@ -85,16 +79,6 @@
                 });
             }, 3000);
         </script>
-=======
-
-            <!-- Tombol Aksi -->
-            <div class="mt-4">
-                <button type="submit" class="btn btn-success">SIMPAN</button>
-               <a href="{{ route('guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
-            </div>
-        </div>
-        </div>
->>>>>>> 9ef0fd1d6a0c27d5197aed00c0be511cd06da0cd
     </div>
     </div>
-@endsection --}}
+@endsection

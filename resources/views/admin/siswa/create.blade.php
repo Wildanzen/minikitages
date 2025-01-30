@@ -29,7 +29,7 @@
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah siswa</h5>
         <div class="card-body">
-            <form action="{{ route('siswa.store') }}" method="POST">
+            <form action="{{ route('admin.siswa.store') }}" method="POST">
                 @csrf
                 <!-- Nama  -->
                 <div class="form-group mt-3">
@@ -76,7 +76,7 @@
                 <!-- Tombol Simpan di Kanan Bawah -->
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success">SIMPAN</button>
-                    <a href="{{ route('siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                    <a href="{{ route('admin.siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
         </div>

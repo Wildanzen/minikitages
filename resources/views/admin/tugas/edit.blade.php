@@ -7,7 +7,7 @@
             <h3>Edit Tugas</h3>
         </div>
         <div class="card-body">
-            <a href="{{ route('tugas.index') }}" class="btn btn-secondary mb-3">Kembali</a>
+            <a href="{{ route('admin.tugas.index') }}" class="btn btn-secondary mb-3">Kembali</a>
 
             <form action="{{ route('tugas.update', $tugas->id) }}" method="POST">
                 @csrf
@@ -39,7 +39,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="{{ route('tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                <a href="{{ route('admin.tugas.index') }}" class="btn btn-warning ms-3">Kembali</a>
             </form>
         </div>
     </div>

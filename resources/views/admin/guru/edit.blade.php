@@ -31,7 +31,7 @@
         <h5 class="card-header bg-grey text-black">edit guru</h5>
         <div class="card-body">
 
-            <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+            <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group mt-1 mb-3">
@@ -65,7 +65,7 @@
 
                 <div class="text-ml mt-4">
                     <button type="submit" class="btn btn-success">SIMPAN</button>
-                    <a href="{{ route('guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
+                    <a href="{{ route('admin.guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
                 </div>
             </form>
         </div>
