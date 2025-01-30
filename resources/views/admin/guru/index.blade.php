@@ -28,7 +28,7 @@
 
         /* Menyesuaikan badge active dengan desain yang lebih elegan */
         .badge-active {
-            background-color: #3ef569;
+            background-color: #5fd27a;
             /* Hijau */
             color: white;
             font-weight: bold;
@@ -41,7 +41,7 @@
 
         /* Menyesuaikan badge inactive dengan desain yang lebih elegan */
         .badge-inactive {
-            background-color: #ff0000;
+            background-color: #de4e4e;
             /* Merah */
             color: white;
             font-weight: bold;
@@ -61,13 +61,13 @@
     </style>
 
     @if(session('success'))
-    <div class="alert alert-success">
+    <div id="alertSuccess" class="alert alert-success">
         {{ session('success') }}
     </div>
     @endif
 
     @if(session('error'))
-    <div class="alert alert-danger">
+    <div id="alertError" class="alert alert-danger">
         {{ session('error') }}
     </div>
     @endif
@@ -157,13 +157,22 @@
             });
         </script>
         <script>
-            setTimeout(function () {
-                document.querySelectorAll('.alert').forEach(alert => {
-                    alert.style.transition = "opacity 0.5s";
-                    alert.style.opacity = "0";
-                    setTimeout(() => alert.remove(), 500);
-                });
-            }, 3000);
+            $(document).ready(function() {
+                // Cek apakah elemen notifikasi ada
+                if ($("#alertSuccess").length) {
+                    console.log("Alert Success ditemukan");
+                    setTimeout(function() {
+                        $("#alertSuccess").fadeOut('slow');
+                    }, 3000); // Hilangkan setelah 3 detik
+                }
+
+                if ($("#alertError").length) {
+                    console.log("Alert Error ditemukan");
+                    setTimeout(function() {
+                        $("#alertError").fadeOut('slow');
+                    }, 3000); // Hilangkan setelah 3 detik
+                }
+            });
         </script>
     @endpush
 @endsection

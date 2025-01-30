@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\KelasController;
@@ -18,14 +18,14 @@ Route::get('/', function () {
     return view('landing.index');
 })->name('landing.index');
 
-// Logout
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect()->route('landing.index');
-})->name('logout');
+// Authentication routes
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // User Routes (Hanya bisa diakses setelah login)
 Route::middleware('auth')->prefix('user')->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -37,22 +37,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Resource routes untuk admin
     Route::resources([
-        'guru' => GuruController::class,
+        'guru'  => GuruController::class,
         'kelas' => KelasController::class,
         'materi' => MateriController::class,
         'nilai' => NilaiController::class,
         'siswa' => SiswaController::class,
         'tugas' => TugasController::class,
-        'error' => ErrorController::class,
     ]);
 });
-
-
-Route::middleware(['auth', 'role:user'])->group(function () {
-
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-
-});
-
-// Authentication routes
-require __DIR__ . '/auth.php';
