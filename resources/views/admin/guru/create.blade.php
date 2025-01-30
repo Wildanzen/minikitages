@@ -37,11 +37,6 @@
                         name="nama_guru" value="{{ old('nama_guru') }}">
                     <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9ef0fd1d6a0c27d5197aed00c0be511cd06da0cd
-
                 <!-- Status -->
                 <div class="form-group mb-3">
                     <label for="status" class="d-block">Status</label>

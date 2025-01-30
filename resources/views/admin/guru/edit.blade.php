@@ -1,4 +1,4 @@
-@extends('layouts.app_modern')
+{{-- @extends('layouts.app_modern')
 
 @section('content')
 <style>
@@ -69,4 +69,4 @@
                 </div>
             </form>
         </div>
-    @endsection
+    @endsection --}}
