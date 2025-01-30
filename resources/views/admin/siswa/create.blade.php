@@ -41,11 +41,25 @@
                     @enderror
                 </div>
 
+                <div class="form-group mt-3">
+                    <label for="umur">Umur</label>
+                    <input type="number" name="umur" id="umur" class="form-control" value="{{ old('umur') }}" required>
+                    @error('umur')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <!--  -->
                 <div class="form-group mt-3">
-                    <label for="kelas">Kelas</label>
-                    <input type="text" name="kelas" id="kelas" class="form-control" value="{{ old('kelas') }}">
-                    @error('kelas')
+                    <label for="kelas_id">Kelas</label>
+                    <select name="kelas_id" id="kelas_id" class="form-control" required>
+                        <option value="">Pilih Kelas</option>
+                        @foreach ($kelas as $k)
+                            <option value="{{ $k->id }}" {{ old('kelas_id', $siswa->kelas_id ?? '') == $k->id ? 'selected' : '' }}>
+                                {{ $k->nama_kelas }}</option>
+                        @endforeach
+                    </select>
+                    @error('kelas_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -59,17 +73,6 @@
                     @enderror
                 </div>
 
-                <!-- STATUS -->
-                <div class="form-group mt-3">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="aktif" {{ old('status') === 'aktif' ? 'selected' : '' }}>Aktif</option>
-                        <option value="nonaktif" {{ old('status') === 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
-                    </select>
-                    @error('status')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
                 <!-- Garis di Atas Tombol -->
                 {{-- <hr style="border: 1px solid #00b7ff; margin-top: 20px; margin-bottom: 20px;"> --}}
 

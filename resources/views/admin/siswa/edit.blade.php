@@ -18,9 +18,21 @@
         </div>
 
         <div class="form-group mt-3">
-            <label for="kelas">Kelas</label>
-            <input type="text" name="kelas" id="kelas" class="form-control" value="{{ old('kelas', $siswa->kelas) }}">
-            @error('kelas')
+            <label for="umur">Umur</label>
+            <input type="number" name="umur" id="umur" class="form-control" value="{{ old('umur', $siswa->umur) }}" required>
+            @error('umur')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <<div class="form-group mt-3">
+            <label for="kelas_id">Kelas</label>
+            <select name="kelas_id" id="kelas_id" class="form-control" required>
+                @foreach ($kelas as $k)
+                    <option value="{{ $k->id }}" {{ old('kelas_id', $siswa->kelas_id ?? '') == $k->id ? 'selected' : '' }}>{{ $k->nama_kelas }}</option>
+                @endforeach
+            </select>
+            @error('kelas_id')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -33,20 +45,8 @@
             @enderror
         </div>
 
-        <div class="form-group mt-3">
-            <label for="status">Status</label>
-            <select name="status" id="status" class="form-control">
-                <option value="aktif" {{ old('status', $siswa->status) === 'aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="nonaktif" {{ old('status', $siswa->status) === 'nonaktif' ? 'selected' : '' }}>Nonaktif
-                </option>
-            </select>
-            @error('status')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
         <button type="submit" class="btn btn-success mt-4">Perbarui</button>
-        <a href="{{ route('admin.siswa.index') }}" class="btn btn-warning ms-3">Kembali</a>
+        <a href="{{ route('admin.siswa.index') }}" class="btn btn-warning mt-4">Kembali</a>
     </form>
 </div>
 @endsection

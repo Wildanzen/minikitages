@@ -22,12 +22,7 @@
         <h6 class="card-header">Daftar Kelas</h6>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
-                <link rel="stylesheet" href="{{ asset('css/guru.css') }}">
-                <a href="{{ route('kelas.create') }}" class="btn btn-primary">Tambah Data</a>
-=======
                 <a href="{{ route('admin.kelas.create') }}" class="btn btn-primary">Tambah Data</a>
->>>>>>> 6a1564da533044259de139729b916cdae3c7812f
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Kelas...">
             </div>
             <table id="dataKelasTable" class="table table-striped table-hover">
@@ -53,12 +48,12 @@
                                 <td>{{ $item->guru->nama_guru }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('kelas.show', $item->id) }}"
+                                        <a href="{{ route('admin.kelas.show', $item->id) }}"
                                             class="btn btn-secondary btn-sm me-2">Lihat</a>
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('kelas.edit', $item->id) }}"
+                                            <a href="{{ route('admin.kelas.edit', $item->id) }}"
                                                 class="btn btn-warning btn-sm me-2">Edit</a>
-                                            <form action="{{ route('kelas.destroy', $item->id) }}" method="POST"
+                                            <form action="{{ route('admin.kelas.destroy', $item->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('delete')

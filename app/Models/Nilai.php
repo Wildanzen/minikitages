@@ -11,16 +11,17 @@ class Nilai extends Model
 
     public function guru()
     {
-        return $this->hasMany(Guru::class);
+    return $this->belongsTo(Guru::class);
     }
-    public function materi()
+
+    public function siswa()
     {
-        return $this->hasMany(Materi::class);
+    return $this->belongsTo(Siswa::class);
     }
 
     public function tugas()
     {
-        return $this->hasMany(Tugas::class);
+    return $this->belongsTo(Tugas::class);
     }
 
 

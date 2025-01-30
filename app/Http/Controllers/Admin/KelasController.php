@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Log;
 use App\Models\Guru;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::with(['guru', 'siswa'])->get();
+        $kelas = Kelas::with(['guru'])->get();
         return view('admin.kelas.index', compact('kelas'));
     }
 
@@ -33,22 +34,25 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_kelas' => 'required|string|unique:kelas',
-            'guru_id' => 'required|exists:gurus,id',
-        ]);
+    $validated = $request->validate([
+    'nama_kelas' => 'required|string|unique:kelas',
+    'guru_id' => 'required|exists:guru,id',
+    ]);
 
-        Kelas::create($validated);
+    Kelas::create($validated);
 
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil ditambahkan.');
+    return redirect()->route('admin.kelas.index')->with('success', 'Kelas berhasil ditambahkan.');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Kelas $kelas)
     {
+        $kelas->load(['guru']); // Pastikan relasi guru dan siswa ikut dimuat
 
+        return view('admin.kelas.show', compact('kelas'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +61,7 @@ class KelasController extends Controller
     {
         $guru = Guru::all();
 
-        return view('admin.kelas.edit', compact('kelas', ));
+        return view('admin.kelas.edit', compact('kelas', 'guru' ));
     }
 
     /**
@@ -67,13 +71,12 @@ class KelasController extends Controller
     {
         $validated = $request->validate([
             'nama_kelas' => 'required|string|unique:kelas,nama_kelas,' . $kelas->id,
-            'guru_id' => 'required|exists:gurus,id',
-            'siswa_id' => 'required|exists:siswa,id',
+            'guru_id' => 'required|exists:guru,id',
         ]);
 
         $kelas->update($validated);
 
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil diperbarui.');
+        return redirect()->route('admin.kelas.index')->with('success', 'Kelas berhasil diperbarui.');
     }
 
     /**
@@ -83,6 +86,6 @@ class KelasController extends Controller
     {
         $kelas->delete();
 
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil dihapus.');
+        return redirect()->route('admin.kelas.index')->with('success', 'Kelas berhasil dihapus.');
     }
 }

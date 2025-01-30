@@ -6,12 +6,8 @@
         <h6 class="card-header">Daftar Materi</h6>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
                 <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
-                <a href="{{ route('materi.create') }}" class="btn btn-primary">Tambah Materi</a>
-=======
                 <a href="{{ route('admin.materi.create') }}" class="btn btn-primary">Tambah Materi</a>
->>>>>>> 6a1564da533044259de139729b916cdae3c7812f
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Materi...">
             </div>
             <table id="dataKelasTable" class="table table-striped table-hover">

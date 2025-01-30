@@ -4,12 +4,7 @@
       <h6 class="card-header">Daftar Siswa</h6>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
-                <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
-                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
-=======
                 <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary">Tambah Data</a>
->>>>>>> 6a1564da533044259de139729b916cdae3c7812f
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Siswa...">
             </div>
             <table id="dataGuruTable" class="table table-striped table-hover">
@@ -19,7 +14,6 @@
                         <th>Nama Siswa</th>
                         <th>Kelas</th>
                         <th>Alamat</th>
-                        <th>Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -30,13 +24,12 @@
                                 tersedia--</td>
                         </tr>
                     @else
-                        @foreach ($siswa as $siswas)
+                        @foreach ($siswa as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $siswas->nama_siswa }}</td>
-                                <td>{{ $siswas->kelas }}</td>
-                                <td>{{ $siswas->alamat }}</td>
-                                <td>{{ ucfirst($siswas->status) }}</td>
+                                <td>{{ $item->nama_siswa }}</td>
+                                <td>{{ $item->kelas->nama_kelas }}</td>
+                                <td>{{ $item->alamat }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('admin.siswa.edit', $item->id) }}"

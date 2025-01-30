@@ -29,7 +29,7 @@ class NilaiController extends Controller
         $siswa = Siswa::all();
         $tugas = Tugas::all();
 
-        return view('admin.nilai.create', compact('guru', 'materi', 'tugas'));
+        return view('admin.nilai.create', compact('guru', 'siswa', 'tugas'));
     }
 
     /**
@@ -39,14 +39,14 @@ class NilaiController extends Controller
     {
         $validated = $request->validate([
             'nilai' => 'required|integer|min:0|max:100',
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'siswa_id' => 'required|exists:siswa,id',
             'tugas_id' => 'required|exists:tugas,id',
         ]);
 
         Nilai::create($validated);
 
-        return redirect()->route('nilai.index')->with('success', 'Nilai berhasil ditambahkan.');
+        return redirect()->route('admin.nilai.index')->with('success', 'Nilai berhasil ditambahkan.');
     }
 
     /**
@@ -76,14 +76,14 @@ class NilaiController extends Controller
     {
         $validated = $request->validate([
             'nilai' => 'required|integer|min:0|max:100,'.$nilai->id,
-            'guru_id' => 'required|exists:gurus,id',
+            'guru_id' => 'required|exists:guru,id',
             'siswa_id' => 'required|exists:siswa,id',
             'tugas_id' => 'required|exists:tugas,id',
         ]);
 
         $nilai->update($validated);
 
-        return redirect()->route('nilai.index')->with('success', 'Nilai berhasil diperbarui.');
+        return redirect()->route('admin.nilai.index')->with('success', 'Nilai berhasil diperbarui.');
     }
 
     /**
@@ -93,6 +93,6 @@ class NilaiController extends Controller
     {
         $nilai->delete();
 
-        return redirect()->route('nilai.index')->with('success', 'Nilai berhasil dihapus.');
+        return redirect()->route('admin.nilai.index')->with('success', 'Nilai berhasil dihapus.');
     }
 }

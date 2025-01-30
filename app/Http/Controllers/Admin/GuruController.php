@@ -32,7 +32,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_guru' => 'required|string|unique:gurus',
+            'nama_guru' => 'required|string|unique:guru',
             'status' => 'required|in:aktif,nonaktif',
             'umur' => 'required|integer|min:1',
             'alamat' => 'required|string',
@@ -65,7 +65,7 @@ class GuruController extends Controller
     public function update(Request $request, Guru $guru)
     {
         $validated = $request->validate([
-            'nama_guru' => 'required|string|unique:gurus,nama_guru,'.$guru->id,
+            'nama_guru' => 'required|string|unique:guru,nama_guru,'.$guru->id,
             'status' => 'required|in:aktif,nonaktif',
             'umur' => 'required|integer|min:0',
             'alamat' => 'required|string',

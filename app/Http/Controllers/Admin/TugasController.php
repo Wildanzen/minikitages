@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tugas;
-use App\Models\Kelas;
-use App\Models\Guru;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -15,7 +14,7 @@ class TugasController extends Controller
      */
     public function index()
     {
-        $tugas = Tugas::with(['guru', 'materi'])->get();
+        $tugas = Tugas::with('siswa')->get(); // Mengambil data tugas dengan relasi siswa
         return view('admin.tugas.index', compact('tugas'));
     }
 
@@ -24,10 +23,8 @@ class TugasController extends Controller
      */
     public function create()
     {
-        $guru = Guru::all();
-        $kelas = Kelas::all();
-
-        return view('admin.tugas.create', compact('guru', 'kelas'));
+        $siswa = Siswa::all(); // Mengambil semua siswa untuk dropdown pilihan
+        return view('admin.tugas.create', compact('siswa'));
     }
 
     /**
@@ -36,14 +33,15 @@ class TugasController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tugas' => 'required|string',
-            'guru_id' => 'required|exists:gurus,id',
-            'materi_id' => 'required|exists:materis,id',
+            'judul_tugas' => 'required|string',
+            'deskripsi' => 'nullable|string',
+            'tanggal_deadline' => 'required|date',
+            'siswa_id' => 'required|exists:siswa,id', // Memastikan siswa_id ada di tabel siswa
         ]);
 
         Tugas::create($validated);
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil ditambahkan.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil ditambahkan.');
     }
 
     /**
@@ -51,7 +49,7 @@ class TugasController extends Controller
      */
     public function show(Tugas $tugas)
     {
-        //
+        return view('admin.tugas.show', compact('tugas'));
     }
 
     /**
@@ -59,10 +57,8 @@ class TugasController extends Controller
      */
     public function edit(Tugas $tugas)
     {
-        $guru = Guru::all();
-        $Kelas = Kelas::all();
-
-        return view('admin.tugas.edit', compact('tugas', 'guru', 'kelas'));
+        $siswa = Siswa::all(); // Mengambil daftar siswa untuk dropdown
+        return view('admin.tugas.edit', compact('tugas', 'siswa'));
     }
 
     /**
@@ -71,14 +67,15 @@ class TugasController extends Controller
     public function update(Request $request, Tugas $tugas)
     {
         $validated = $request->validate([
-            'tugas' => 'required|string,' . $tugas->id,
-            'guru_id' => 'required|exists:gurus,id',
-            'materi_id' => 'required|exists:materis,id',
+            'judul_tugas' => 'required|string',
+            'deskripsi' => 'nullable|string',
+            'tanggal_deadline' => 'required|date',
+            'siswa_id' => 'required|exists:siswa,id',
         ]);
 
         $tugas->update($validated);
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil diperbarui.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil diperbarui.');
     }
 
     /**
@@ -88,6 +85,6 @@ class TugasController extends Controller
     {
         $tugas->delete();
 
-        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil dihapus.');
+        return redirect()->route('admin.tugas.index')->with('success', 'Tugas berhasil dihapus.');
     }
 }

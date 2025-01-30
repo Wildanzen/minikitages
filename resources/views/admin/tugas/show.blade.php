@@ -23,8 +23,8 @@
                     <td>{{ \Carbon\Carbon::parse($tugas->tanggal_deadline)->format('d M Y') }}</td>
                 </tr>
                 <tr>
-                    <th>Kelas</th>
-                    <td>{{ $tugas->kelas->nama_kelas }}</td>
+                    <th>Siswa</th>
+                    <td>{{ $tugas->siswa->nama_siswa }}</td>
                 </tr>
             </table>
         </div>

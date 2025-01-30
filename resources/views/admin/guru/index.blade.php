@@ -82,7 +82,7 @@
                                     </button>
 
                                     <!-- Delete button with trash bin icon -->
-                                    <form action="{{ route('guru.destroy', $item->id) }}" method="POST"
+                                    <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('delete')
@@ -105,7 +105,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('guru.update', $item->id) }}" method="POST">
+                                            <form action="{{ route('admin.guru.update', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
 
