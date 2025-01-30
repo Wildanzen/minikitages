@@ -18,13 +18,13 @@
             font-weight: bold;
         }
 
-        /* Menebalkan teks pada input search */
-        #searchInput {
-            font-weight: bold;
-        }
+    /* Menebalkan teks pada input search */
+    #searchInput {
+        font-weight: bold;
+    }
+</style>
+
     </style>
-
-
     <div class="card">
         <h5 class="card-header bg-grey text-black">Tambah guru</h5>
         <div class="card-body">
@@ -37,6 +37,10 @@
                         name="nama_guru" value="{{ old('nama_guru') }}">
                     <span class="text-danger">{{ $errors->first('nama_guru') }}</span>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ef0fd1d6a0c27d5197aed00c0be511cd06da0cd
 
                 <!-- Status -->
                 <div class="form-group mb-3">
@@ -63,6 +67,7 @@
                     <span class="text-danger">{{ $errors->first('alamat') }}</span>
                 </div>
 
+<<<<<<< HEAD
                 <!-- Tombol Aksi -->
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success">SIMPAN</button>
@@ -80,6 +85,16 @@
                 });
             }, 3000);
         </script>
+=======
+
+            <!-- Tombol Aksi -->
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">SIMPAN</button>
+               <a href="{{ route('guru.index') }}" class="btn btn-warning ms-3">Kembali</a>
+            </div>
+        </div>
+        </div>
+>>>>>>> 9ef0fd1d6a0c27d5197aed00c0be511cd06da0cd
     </div>
     </div>
 @endsection --}}
