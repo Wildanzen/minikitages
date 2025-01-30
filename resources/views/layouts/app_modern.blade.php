@@ -15,30 +15,6 @@
 </head>
 
 <body>
-    <style>
-        /* CSS untuk background GIF animasi */
-        body {
-            background: url('{{ asset('gambar/kapalterbang.gif') }}') no-repeat center center fixed;
-            background-size: 30% auto;
-            /* Memperkecil ukuran background */
-            background-position: right 20% bottom;
-            /* Arahkan ke kanan dan turunkan ke bawah */
-            animation: backgroundAnimation 10s infinite;
-            /* Optional: atur durasi animasi */
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                background-position: right 60% bottom;
-                /* Mulai dari kanan dan bawah */
-            }
-
-            100% {
-                background-position: right 25% bottom;
-                /* Tetap di kanan dan bawah */
-            }
-        }
-    </style>
 
     <!-- Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -212,6 +188,22 @@
     <!-- Menambahkan Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownElement = document.getElementById("drop2");
+            if (dropdownElement) {
+                dropdownElement.addEventListener("click", function() {
+                    var dropdownMenu = this.nextElementSibling;
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.toggle("show");
+                    }
+                });
+            }
+        });
+    </script>
+
+
+    @yield('scripts')
 </body>
 
 </html>

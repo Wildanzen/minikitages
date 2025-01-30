@@ -5,7 +5,7 @@
         }
 
         .card, .card-header, .card-body, th, td, .form-control, .btn {
-            font-weight: bold;
+            /* font-weight: ; */
         }
 
         #searchInput {
@@ -32,21 +32,67 @@
             transition: all 0.3s ease;
         }
 
-        .badge-active:hover, .badge-inactive:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
-        /* Make the search input text bold */
-        #searchInput {
-            font-weight: bold;
-            border: 2px solid #007bff; /* You can change the color as needed */
-        }
+       /* Badge untuk aktif */
+            .badge-active {
+                background-color: rgba(62, 245, 105, 0.4); /* Hijau dengan transparansi */
+                color: white;
+                font-weight: bold;
+                font-size: 0.8rem; /* Kecilkan ukuran font */
+                padding: 0.3rem 0.8rem; /* Sesuaikan padding untuk tampilan lebih ramping */
+                border-radius: 20px;
+                text-transform: capitalize;
+                transition: all 0.3s ease;
+                display: inline-flex; /* Memastikan badge menyesuaikan dengan isi */
+                justify-content: center; /* Menyelaraskan teks di tengah */
+                align-items: center; /* Menyelaraskan teks di tengah secara vertikal */
+                height: auto; /* Sesuaikan tinggi berdasarkan padding */
+                width: auto; /* Sesuaikan lebar berdasarkan padding */
+                box-sizing: border-box;
+            }
 
-        /* Make the placeholder text bold */
-        #searchInput::placeholder {
-            font-weight: bold;
-        }
-        #searchInput:focus {
-            border-color: #0056b3; /* Change focus border color */
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a shadow for focus effect */
+            .badge-active {
+                background-color: rgba(62, 245, 105, 0.4); /* Hijau transparan */
+                color: white;
+                font-weight: bold;
+                font-size: 0.8rem; /* Kecilkan ukuran font */
+                padding: 0.3rem 1rem; /* Sesuaikan padding agar lebih konsisten */
+                border-radius: 20px;
+                text-transform: capitalize;
+                transition: all 0.3s ease;
+            }
+
+            .badge-inactive {
+                background-color: rgba(255, 0, 0, 0.4); /* Merah transparan */
+                color: white;
+                font-weight: bold;
+                font-size: 0.8rem; /* Kecilkan ukuran font */
+                padding: 0.3rem 1rem; /* Sesuaikan padding agar lebih konsisten */
+                border-radius: 20px;
+                text-transform: capitalize;
+                transition: all 0.3s ease;
+            }
+
+
+            /* Make the search input text bold */
+            #searchInput {
+                font-weight: bold;
+            }
+
+            /* Make the placeholder text bold */
+            #searchInput::placeholder {
+                font-weight: bold;
+            }
+            .search-container {
+                position: relative;
+            }
+
+            .search-container input {
+                padding-left: 30px; /* Memberikan jarak lebih besar antara ikon dan teks */
+            }
+
+            .search-container i {
+            position: absolute;
+            top: 50%;
+            left: 10px; /* Sesuaikan posisi kiri ikon */
+            transform: translateY(-50%);
         }

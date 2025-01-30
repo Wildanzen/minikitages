@@ -34,17 +34,21 @@
     @endif
 
     <div class="card">
-        <h4 class="card-header bg-grey text-black">Daftar Guru</h4>
+        <h6 class="card-header">Daftar Guru</h6>
         <div class="card-body">
             <link rel="stylesheet" href="{{ asset('css/guru.css') }}">
             <div class="mb-3 d-flex justify-content-between align-items-center">
+                <link rel="stylesheet" href="{{ asset('css/guru.css') }}">
                 <!-- Button to trigger modal for adding data -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahGuruModal">
                     Tambah Data
                 </button>
-                <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Guru...">
+                <div class="search-container position-relative w-50">
+                    <input type="text" id="searchInput" class="form-control pl-5" placeholder="Cari Data Guru...">
+                    <i class="fas fa-search position-absolute"
+                        style="top: 50%; left: 15px; transform: translateY(-50%);"></i>
+                </div>
             </div>
-
             <table id="dataGuruTable" class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -224,26 +228,34 @@
         </div>
     </div>
 
-    @push('scripts')
+
+    @section('scripts')
         <script>
-            $(document).ready(function() {
-                var table = $('#dataGuruTable').DataTable({
-                    responsive: true,
-                    autoWidth: false,
-                    language: {
-                        search: "Cari:",
-                        lengthMenu: "Tampilkan _MENU_ data per halaman",
-                        zeroRecords: "Tidak ada data ditemukan",
-                        info: "Menampilkan _PAGE_ dari _PAGES_ halaman",
-                        infoEmpty: "Tidak ada data tersedia",
-                        infoFiltered: "(difilter dari _MAX_ total data)"
-                    }
+            @if ($errors->any())
+                $(document).ready(function() {
+                    var myModal = new bootstrap.Modal(document.getElementById('tambahGuruModal'));
+                    myModal.show();
                 });
+            @endif
+
+            // $(document).ready(function() {
+            //     var table = $('#dataGuruTable').DataTable({
+            //         responsive: true,
+            //         autoWidth: false,
+            //         language: {
+            //             search: "Cari:",
+            //             lengthMenu: "Tampilkan _MENU_ data per halaman",
+            //             zeroRecords: "Tidak ada data ditemukan",
+            //             info: "Menampilkan _PAGE_ dari _PAGES_ halaman",
+            //             infoEmpty: "Tidak ada data tersedia",
+            //             infoFiltered: "(difilter dari _MAX_ total data)"
+            //         }
+            //     });
 
                 $('#searchInput').on('keyup', function() {
                     table.search(this.value).draw();
                 });
-            });
+            // });
         </script>
-    @endpush
+    @endsection
 @endsection

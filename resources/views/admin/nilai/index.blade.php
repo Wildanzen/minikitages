@@ -1,35 +1,11 @@
 @extends('layouts.app_modern')
 @section('content')
-
-<style>
-        .bg-grey {
-            background-color: #ffffff;
-            /* Warna ungu */
-            color: white;
-            /* Warna teks putih */
-        }
-
-        /* Menebalkan seluruh teks dalam card */
-        .card,
-        .card-header,
-        .card-body,
-        th,
-        td,
-        .form-control,
-        .btn {
-            font-weight: bold;
-        }
-
-        /* Menebalkan teks pada input search */
-        #searchInput {
-            font-weight: bold;
-
-        }
     </style>
     <div class="card">
-        <h4 class="card-header bg-grey text-black">Daftar Nilai</h4>
+        <h6 class="card-header">Daftar Nilai</h6>
         <div class="card-body">
             <div class="mb-3 d-flex justify-content-between align-items-center">
+                <link rel="stylesheet" href="{{ asset('css/logoanimasi.css') }}">
                 <a href="{{ route('nilai.create') }}" class="btn btn-primary">Tambah Data</a>
                 <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari Data Nilai...">
             </div>
