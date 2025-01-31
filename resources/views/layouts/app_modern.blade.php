@@ -43,61 +43,78 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./dashboard" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route(Auth::user()->role . '.dashboard') }}"
+                                aria-expanded="false">
                                 <span><i class="ti ti-layout-dashboard"></i></span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Fitur</span>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.guru.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-user"></i></span>
-                                <span class="hide-menu">Guru</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.kelas.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-home"></i></span>
-                                <span class="hide-menu">Kelas</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.siswa.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-user"></i></span>
-                                <span class="hide-menu">Siswa</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.tugas.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-file-description"></i></span>
-                                <span class="hide-menu">Tugas</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.nilai.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-check"></i></span>
-                                <span class="hide-menu">Nilai</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.materi.index') }}" aria-expanded="false">
-                                <span><i class="ti ti-book"></i></span>
-                                <span class="hide-menu">Materi</span>
-                            </a>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Hello</span>
-                        </li>
-                        <li class="sidebar-item text-center">
-                            <img src="{{ asset('gambar/download.jpeg') }}" alt="Materi" class="img-fluid mt-2"
-                                width="150">
-                        </li>
-                        </li>
+
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Admin Menu</span>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.guru.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-user"></i></span>
+                                    <span class="hide-menu">Guru</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.kelas.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-home"></i></span>
+                                    <span class="hide-menu">Kelas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.siswa.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-user"></i></span>
+                                    <span class="hide-menu">Siswa</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.tugas.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-file-description"></i></span>
+                                    <span class="hide-menu">Tugas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.nilai.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-check"></i></span>
+                                    <span class="hide-menu">Nilai</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.materi.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-book"></i></span>
+                                    <span class="hide-menu">Materi</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if (Auth::user()->role == 'user')
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">User Menu</span>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('user.tugas.index') }}" aria-expanded="false">
+                                    <span><i class="ti ti-file-description"></i></span>
+                                    <span class="hide-menu">Tugas Saya</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('user.materi.index') }}"
+                                    aria-expanded="false">
+                                    <span><i class="ti ti-book"></i></span>
+                                    <span class="hide-menu">Materi</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
+
             </div>
         </aside>
         <!-- Sidebar End -->
