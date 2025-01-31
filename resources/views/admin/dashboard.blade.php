@@ -1,16 +1,31 @@
 @extends('layouts.app_modern')
 
 @section('content')
-
     <div class="container py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-100 p-6 rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <!-- Title for the page -->
-                    <h5 class="text-xl font-semibold mb-4">overview</h5>
-                     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-                    <!-- Chart Container -->
-                    <div id="chart" class="w-full"></div>
+                    <h5 class="text-xl font-semibold mb-4">Dashboard Guru</h5>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white p-4 shadow rounded">
+                            <h6 class="text-lg font-semibold">Total Guru</h6>
+                            <p class="text-2xl">{{ $totalGuru }}</p>
+                        </div>
+                        <div class="bg-green-200 p-4 shadow rounded">
+                            <h6 class="text-lg font-semibold">Guru Aktif</h6>
+                            <p class="text-2xl">{{ $guruAktif }}</p>
+                        </div>
+                        <div class="bg-red-200 p-4 shadow rounded">
+                            <h6 class="text-lg font-semibold">Guru Nonaktif</h6>
+                            <p class="text-2xl">{{ $guruNonaktif }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="mt-6">
+                        <h6 class="text-lg font-semibold">Guru yang Sering Online</h6>
+                        <div id="guruChart"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,73 +33,25 @@
 
     <!-- Include ApexCharts library -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
     <script>
+        var guruData = {!! json_encode($guruSeringOnline->pluck('login_count')) !!};
+        var guruNames = {!! json_encode($guruSeringOnline->pluck('nama_guru')) !!};
+
         var options = {
             chart: {
                 type: 'bar',
                 height: 400,
-                width: '100%', // Menjadikan chart lebar 100% dari kontainer
-                toolbar: {
-                    show: false
-                },
             },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '25%', // Mengurangi lebar batang untuk membuatnya lebih ramping
-                    endingShape: 'rounded'
-                },
-            },
-            dataLabels: {
-                enabled: true,
-            },
-            colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
             series: [{
-                name: 'My First Dataset',
-                data: [65, 59, 80, 81, 56]
+                name: 'Jumlah Login',
+                data: guruData
             }],
             xaxis: {
-                categories: ['January', 'February', 'March', 'April', 'May'],
-            },
-            yaxis: {
-                title: {
-                    // text: 'Values'
-                }
-            },
-            title: {
-                text: 'kontol',
-                align: 'center',
-                style: {
-                    fontSize: '15px',
-                    fontWeight: 'bold',
-                    color: '#333'
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                shared: true,
-                intersect: false
-            },
-            responsive: [{
-                breakpoint: 768,
-                options: {
-                    chart: {
-                        height: 350, // Menyesuaikan tinggi chart saat layar lebih kecil
-                    },
-                    title: {
-                        style: {
-                            fontSize: '12px', // Mengurangi ukuran font judul saat layar lebih kecil
-                        }
-                    }
-                }
-            }]
-        }
+                categories: guruNames,
+            }
+        };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        var chart = new ApexCharts(document.querySelector("#guruChart"), options);
         chart.render();
     </script>
-
 @endsection
