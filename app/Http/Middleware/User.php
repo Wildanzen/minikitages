@@ -11,7 +11,7 @@ class User
     public function handle(Request $request, Closure $next, $role = 'user')
     {
         if (!Auth::check() || Auth::user()->role !== $role) {
-            return redirect()->route('landing.index'); // Redirect ke landing page jika bukan user
+            return redirect()->route('landing.index');
         }
 
         return $next($request);
