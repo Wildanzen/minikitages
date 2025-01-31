@@ -35,13 +35,13 @@
     <main class="container mx-auto text-center py-16 px-4">
         <h1 class="text-5xl font-extrabold text-gray-800 animate-fadeIn">Selamat Datang</h1>
         <p class="mt-6 text-lg text-gray-600 animate-fadeIn" style="animation-delay: 0.2s;">
-            Login jika sudah punya akun atau Register jika belum
+            Login jika sudah punya akun atau Daftar jika belum
         </p>
         <div class="mt-8 flex justify-center space-x-4 animate-fadeIn" style="animation-delay: 0.4s;">
             <a href="login"
                 class="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-transform transform hover:scale-105">Login</a>
             <a href="register"
-                class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold shadow-md hover:bg-gray-300 transition-transform transform hover:scale-105">Register</a>
+                class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold shadow-md hover:bg-gray-300 transition-transform transform hover:scale-105">Daftar</a>
         </div>
 
         <!-- Paket Kursus Section -->

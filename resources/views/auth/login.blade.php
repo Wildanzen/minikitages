@@ -28,7 +28,7 @@
                 <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="username"
                     class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none">
                 @error('email')
-                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-500">{{ $message == 'The email field is required.' ? 'Email harus diisi' : $message }}</p>
                 @enderror
             </div>
 
@@ -49,7 +49,7 @@
                     </svg>
                 </button>
                 @error('password')
-                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-500">{{ 'Password harus diisi.' }}</p>
                 @enderror
             </div>
 
