@@ -125,9 +125,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        document.querySelector("form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Mencegah submit langsung
-
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
@@ -142,6 +141,15 @@
                 return;
             }
 
+            if (password.length < 8) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Password minimal 8 karakter!",
+                });
+                return;
+            }
+
             if (password !== confirmPassword) {
                 Swal.fire({
                     icon: "error",
@@ -151,16 +159,10 @@
                 return;
             }
 
-            Swal.fire({
-                icon: "success",
-                title: "Pendaftaran berhasil!",
-                text: "Akun Anda telah dibuat.",
-                confirmButtonText: "OK"
-            }).then(() => {
-                event.target.submit(); // Submit form setelah SweetAlert ditutup
-            });
+            event.target.submit();
         });
     </script>
+
 
 </body>
 
