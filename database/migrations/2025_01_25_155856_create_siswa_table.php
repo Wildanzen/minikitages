@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_siswa');
             $table->integer('umur');
             $table->string('alamat');
+            $table->string('image')->nullable();
             $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade'); // Relasi ke kelas
             $table->timestamps();
         });

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->enum('status', ['aktif', 'nonaktif']);
             $table->integer('umur');
             $table->string('alamat');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
