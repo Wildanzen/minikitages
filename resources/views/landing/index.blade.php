@@ -35,6 +35,10 @@
     <main class="container mx-auto text-center py-16 px-4">
         <h1 class="text-5xl font-extrabold text-gray-800 animate-fadeIn">Selamat Datang</h1>
         <p class="mt-6 text-lg text-gray-600 animate-fadeIn" style="animation-delay: 0.2s;">
+            Selamat datang di platform e-learning terbaik untuk meningkatkan keterampilan dan pengetahuan Anda! Kami menyediakan
+            berbagai kursus yang dirancang untuk pemula hingga profesional, dengan materi yang mudah dipahami dan dipandu oleh
+            instruktur berpengalaman.
+            
             Login jika sudah punya akun atau Daftar jika belum
         </p>
         <div class="mt-8 flex justify-center space-x-4 animate-fadeIn" style="animation-delay: 0.4s;">
