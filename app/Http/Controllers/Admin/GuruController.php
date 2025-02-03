@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 class GuruController extends Controller
 {
     /**
-     * Display a listing of the resourcey.
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -36,12 +36,10 @@ class GuruController extends Controller
             'status' => 'required|in:aktif,nonaktif',
             'umur' => 'required|integer|min:1',
             'alamat' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ], [
             'nama_guru.required' => 'Nama guru tidak boleh kosong.',
             'umur.required' => 'Umur tidak boleh kosong.',
             'alamat.required' => 'Alamat tidak boleh kosong.',
-            'image.required' => 'Image tidak boleh kosong.',
         ]);
         Guru::create($request->all());
 
@@ -75,13 +73,10 @@ class GuruController extends Controller
             'status' => 'required|in:aktif,nonaktif',
             'umur' => 'required|integer|min:0',
             'alamat' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-
         ], [
             'nama_guru.required' => 'Nama guru tidak boleh kosong.',
             'umur.required' => 'Umur tidak boleh kosong.',
             'alamat.required' => 'Alamat tidak boleh kosong.',
-            'image.required' => 'Image tidak boleh kosong.',
         ]);
 
         $guru->update($validated);
