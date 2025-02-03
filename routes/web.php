@@ -44,26 +44,24 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Resource routes untuk admin
-        Route::resource('/guru', GuruController::class);
-        Route::get('kelas', [KelasController::class, 'index'])->name('kelas.index');
-        Route::get('kelas/create', [KelasController::class, 'create'])->name('kelas.create');
-        Route::post('kelas', [KelasController::class, 'store'])->name('kelas.store');
-        Route::get('kelas/{kelas}', [KelasController::class, 'show'])->name('kelas.show');
-        Route::get('kelas/{kelas}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
-        Route::put('kelas/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
-        Route::patch('kelas/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
-        Route::delete('kelas/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy');
-        Route::resource('/materi', MateriController::class);
-        Route::resource('/nilai', NilaiController::class);
-        Route::resource('/siswa', SiswaController::class);
-        Route::get('tugas', [TugasController::class, 'index'])->name('tugas.index');
-        Route::get('tugas/create', [TugasController::class, 'create'])->name('tugas.create');
-        Route::post('tugas', [TugasController::class, 'store'])->name('tugas.store');
-        Route::get('tugas/{tugas}', [TugasController::class, 'show'])->name('tugas.show');
-        Route::get('tugas/{tugas}/edit', [TugasController::class, 'edit'])->name('tugas.edit');
-        Route::put('tugas/{tugas}', [TugasController::class, 'update'])->name('tugas.update');
-        Route::patch('tugas/{tugas}', [TugasController::class, 'update'])->name('tugas.update');
-        Route::delete('tugas/{tugas}', [TugasController::class, 'destroy'])->name('tugas.destroy');
+    Route::resource('/guru', GuruController::class);
+    Route::get('kelas', [KelasController::class, 'index'])->name('kelas.index');
+    Route::get('kelas/create', [KelasController::class, 'create'])->name('kelas.create');
+    Route::post('kelas', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('kelas/{kelas}', [KelasController::class, 'show'])->name('kelas.show');
+    Route::get('kelas/{kelas}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::put('kelas/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('kelas/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+    Route::resource('/materi', MateriController::class);
+    Route::resource('/nilai', NilaiController::class);
+    Route::resource('/siswa', SiswaController::class);
+    Route::get('tugas', [TugasController::class, 'index'])->name('tugas.index');
+    Route::get('tugas/create', [TugasController::class, 'create'])->name('tugas.create');
+    Route::post('tugas', [TugasController::class, 'store'])->name('tugas.store');
+    Route::get('tugas/{tugas}', [TugasController::class, 'show'])->name('tugas.show');
+    Route::get('tugas/{tugas}/edit', [TugasController::class, 'edit'])->name('tugas.edit');
+    Route::put('tugas/{tugas}', [TugasController::class, 'update'])->name('tugas.update');
+    Route::delete('tugas/{tugas}', [TugasController::class, 'destroy'])->name('tugas.destroy');
 
 });
 
