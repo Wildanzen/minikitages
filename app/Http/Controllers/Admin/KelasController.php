@@ -16,7 +16,8 @@ class KelasController extends Controller
     public function index()
     {
         $kelas = Kelas::with(['guru'])->get();
-        return view('admin.kelas.index', compact('kelas'));
+        $guru = Guru::all();
+        return view('admin.kelas.index', compact('kelas','guru'));
     }
 
     /**
