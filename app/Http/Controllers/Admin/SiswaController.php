@@ -37,6 +37,7 @@ class SiswaController extends Controller
             'umur' => 'required|integer|min:1',
             'kelas_id' => 'required|exists:kelas,id',
             'alamat' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         Siswa::create($validated);
@@ -72,6 +73,7 @@ class SiswaController extends Controller
             'umur' => 'required|integer|min:1',
             'kelas_id' => 'required|exists:kelas,id',
             'alamat' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $siswa->update($validated);
