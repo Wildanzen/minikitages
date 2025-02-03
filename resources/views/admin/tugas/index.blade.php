@@ -1,29 +1,8 @@
 @extends('layouts.app_modern')
 
 @section('content')
-<style>
-    .bg-grey {
-        background-color: #ffffff;
-        color: black;
-    }
-
-    .card,
-    .card-header,
-    .card-body,
-    th,
-    td,
-    .form-control,
-    .btn {
-        font-weight: bold;
-    }
-
-    #searchInput {
-        font-weight: bold;
-    }
-</style>
-
 <div class="card">
-    <h4 class="card-header bg-grey text-black">Daftar Tugas</h4>
+    <h6 class="card-header bg-grey text-black">Daftar Tugas</h6>
     <div class="card-body">
         <div class="mb-3 d-flex justify-content-between align-items-center">
             <a href="{{ route('admin.tugas.create') }}" class="btn btn-primary">Tambah Data</a>

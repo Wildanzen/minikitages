@@ -28,23 +28,29 @@
                             <td>{{ $item->guru->nama_guru }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center">
-                                    <!-- Edit button triggers modal -->
-                                    <button type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="modal"
-                                        data-bs-target="#editGuruModal{{ $item->id }}">
-                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    <!-- Tombol Show (Detail) -->
+                                    <button type="button" class="btn btn-info btn-sm me-2" data-bs-toggle="modal"
+                                        data-bs-target="#kelasModal{{ $item->id }}">
+                                        <i class="fa-solid fa-eye"></i>
                                     </button>
-
-                                    <!-- Delete button with trash bin icon -->
-                                    <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST"
-                                        style="display:inline;">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Anda yakin ?')">
-                                            <i class="fa-solid fa-trash-can"></i>
+                                    <div class="d-flex justify-content-center">
+                                        <!-- Edit button triggers modal -->
+                                        <button type="button" class="btn btn-warning btn-sm me-2"
+                                            onclick="openEditModal('{{ $item->id }}', '{{ $item->nama_kelas }}', '{{ $item->guru->id }}')">
+                                            <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
-                                    </form>
-                                </div>
+
+                                        <!-- Delete button with trash bin icon -->
+                                        <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Anda yakin ?')">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                             </td>
                         @empty
                         <tr>
@@ -129,6 +135,26 @@
             </div>
         </div>
     </div>
+    <!-- Modal Detail Kelas -->
+    <div class="modal fade" id="kelasModal{{ $item->id }}" tabindex="-1"
+        aria-labelledby="kelasModalLabel{{ $item->id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kelasModalLabel{{ $item->id }}">Detail Kelas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Nama Kelas:</strong> {{ $item->nama_kelas }}</p>
+                    <p><strong>Guru:</strong> {{ $item->guru->nama_guru }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal -->
 
     @section('scripts')
         <script>

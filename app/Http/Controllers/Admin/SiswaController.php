@@ -14,9 +14,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
-        return view('admin.siswa.index', compact('siswa'));
+        $kelas = Kelas::all();  // Assuming you have a Kelas model to get all classes
+        $siswa = Siswa::all();  // Assuming you have a Siswa model to get all students
+        return view('admin.siswa.index', compact('siswa', 'kelas'));  // Pass both $siswa and $kelas to the view
     }
+
 
     /**
      * Show the form for creating a new resource.
