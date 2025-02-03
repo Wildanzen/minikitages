@@ -1,4 +1,5 @@
 @extends('layouts.app_modern')
+
 @section('content')
     <div class="card">
         <h6 class="card-header">Daftar Kelas</h6>
@@ -41,7 +42,7 @@
                                         </button>
 
                                         <!-- Delete button with trash bin icon -->
-                                        <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST"
+                                        <form action="{{ route('admin.kelas.destroy', $item->id) }}" method="POST"
                                             style="display:inline;">
                                             @csrf
                                             @method('delete')
@@ -51,8 +52,9 @@
                                             </button>
                                         </form>
                                     </div>
-                            </td>
-                        @empty
+                                </td>
+                        </tr>
+                    @empty
                         <tr>
                             <td colspan="4" class="text-center">--Data kelas belum tersedia--</td>
                         </tr>
@@ -83,8 +85,7 @@
                             <select class="form-control" id="guru_id" name="guru_id">
                                 <option value="">Pilih Guru</option>
                                 @foreach ($guru as $g)
-                                    <option value="{{ $g->id }}" {{ old('guru_id') == $g->id ? 'selected' : '' }}>
-                                        {{ $g->nama_guru }}</option>
+                                    <option value="{{ $g->id }}" {{ old('guru_id') == $g->id ? 'selected' : '' }}>{{ $g->nama_guru }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -135,9 +136,10 @@
             </div>
         </div>
     </div>
+
     <!-- Modal Detail Kelas -->
-    <div class="modal fade" id="kelasModal{{ $item->id }}" tabindex="-1"
-        aria-labelledby="kelasModalLabel{{ $item->id }}" aria-hidden="true">
+    @foreach($kelas as $item)
+    <div class="modal fade" id="kelasModal{{ $item->id }}" tabindex="-1" aria-labelledby="kelasModalLabel{{ $item->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -154,7 +156,7 @@
             </div>
         </div>
     </div>
-    <!-- Akhir Modal -->
+    @endforeach
 
     @section('scripts')
         <script>

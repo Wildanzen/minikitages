@@ -25,8 +25,7 @@
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="/siswa-offline" class="text-nowrap logo-img">
                         <div id="logo-container" class="d-flex justify-content-center align-items-center">
-                            <img id="logo" src="https://pkl.hummatech.com/logopkldark.png" class="dark-logo"
-                                width="180" alt="">
+                           {{-- <img id="logo" src="{{ asset('gambar/logokita.jpeg') }}" class="dark-logo"> --}}
                         </div>
                         <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png" class="light-logo"
                             width="180" alt="" style="display: none;">
