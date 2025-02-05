@@ -16,8 +16,9 @@ class MateriController extends Controller
      */
     public function index()
     {
+        $kelas = Kelas::all();
         $materi = Materi::with(['kelas'])->get();
-        return view('admin.materi.index', compact('materi'));
+        return view('admin.materi.index', compact('materi', 'kelas'));
     }
 
     /**
@@ -26,7 +27,7 @@ class MateriController extends Controller
     public function create()
     {
         $guru = Guru::all(); // Ambil data guru dari database
-        $kelas = Kelas::all(); // Ambil data kelas dari database
+         // Ambil data kelas dari database
         $siswa = Siswa::all(); // Ambil data siswa dari database
 
         return view('admin.materi.create', compact('guru', 'kelas', 'siswa'));

@@ -1,4 +1,4 @@
-@extends('layouts.app_modern')
+{{-- @extends('layouts.app_modern')
 
 @section('content')
 <div class="container py-12">
@@ -35,4 +35,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
