@@ -25,10 +25,10 @@
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="/siswa-offline" class="text-nowrap logo-img">
                         <div id="logo-container" class="d-flex justify-content-center align-items-center">
-                           {{-- <img id="logo" src="{{ asset('gambar/logokita.jpeg') }}" class="dark-logo"> --}}
+                           <img id="logo" src="{{ asset('gambar/logokitaremov.png') }}" class="dark-logo" width="170">
                         </div>
-                        <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png" class="light-logo"
-                            width="180" alt="" style="display: none;">
+                        {{-- <img src="https://pkl.hummatech.com/assets/images/logo-pkl.png" class="light-logo"
+                            width="180" alt="" style="display: none;"> --}}
                     </a>
                     <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8 text-muted text-primary"></i>

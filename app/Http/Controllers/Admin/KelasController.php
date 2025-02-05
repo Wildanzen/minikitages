@@ -38,6 +38,11 @@ class KelasController extends Controller
     $validated = $request->validate([
     'nama_kelas' => 'required|string|unique:kelas',
     'guru_id' => 'required|exists:guru,id',
+    ], [
+        'nama_kelas.required' => 'Nama kelas tidak boleh kosong.',
+        'nama_kelas.unique' => 'Nama kelas sudah digunakan, silakan pilih nama lain.',
+        'guru_id.required' => 'Harap pilih guru untuk kelas ini.',
+        'guru_id.exists' => 'Guru yang dipilih tidak valid.',
     ]);
 
     Kelas::create($validated);
@@ -73,6 +78,11 @@ class KelasController extends Controller
         $validated = $request->validate([
             'nama_kelas' => 'required|string|unique:kelas,nama_kelas,' . $kelas->id,
             'guru_id' => 'required|exists:guru,id',
+        ], [
+            'nama_kelas.required' => 'Nama kelas tidak boleh kosong.',
+            'nama_kelas.unique' => 'Nama kelas sudah digunakan, silakan pilih nama lain.',
+            'guru_id.required' => 'Harap pilih guru untuk kelas ini.',
+            'guru_id.exists' => 'Guru yang dipilih tidak valid.',
         ]);
 
         $kelas->update($validated);

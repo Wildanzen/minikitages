@@ -1,6 +1,38 @@
 @extends('layouts.app_modern')
 
 @section('content')
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+        </div>
+        <script>
+            setTimeout(function() {
+                let alert = document.querySelector('.alert');
+                if (alert) {
+                    alert.style.transition = "opacity 0.5s ease-in-out";
+                    alert.style.opacity = "0";
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 4000);
+        </script>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+        </div>
+        <script>
+            setTimeout(function() {
+                let alert = document.querySelector('.alert');
+                if (alert) {
+                    alert.style.transition = "opacity 0.5s ease-in-out";
+                    alert.style.opacity = "0";
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 4000);
+        </script>
+    @endif
+
     <div class="card">
         <h6 class="card-header">Daftar Kelas</h6>
         <div class="card-body">
@@ -77,17 +109,24 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas" class="form-label">Nama Kelas</label>
-                            <input type="text" class="form-control" id="nama_kelas" name="nama_kelas"
+                            <input type="text" class="form-control @error('nama_kelas') is-invalid @enderror" id="nama_kelas" name="nama_kelas"
                                 value="{{ old('nama_kelas') }}">
+                            @error('nama_kelas')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                         <div class="mb-3">
                             <label for="guru_id" class="form-label">Guru</label>
-                            <select class="form-control" id="guru_id" name="guru_id">
+                            <select class="form-control @error('guru_id') is-invalid @enderror" id="guru_id" name="guru_id">
                                 <option value="">Pilih Guru</option>
                                 @foreach ($guru as $g)
                                     <option value="{{ $g->id }}" {{ old('guru_id') == $g->id ? 'selected' : '' }}>{{ $g->nama_guru }}</option>
                                 @endforeach
                             </select>
+                            @error('guru_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-success">SIMPAN</button>
